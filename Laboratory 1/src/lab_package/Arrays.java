@@ -7,11 +7,11 @@ public class Arrays {
 
 	public Arrays() {
 		this.facultiesArray = new Faculty[0];
-		Faculty fen = new Faculty("ФЕН");
+		Faculty fen = new Faculty("FEN");
 		setFacultyToAray(fen);
-		Faculty fi = new Faculty("ФІ");
+		Faculty fi = new Faculty("FI");
 		setFacultyToAray(fi);
-		Faculty fpvn = new Faculty("ФПВН");
+		Faculty fpvn = new Faculty("FPVN");
 		setFacultyToAray(fpvn);
 	}
 
@@ -33,52 +33,95 @@ public class Arrays {
 
 	}
 	
-	public void facultyDelete() throws IOException{
-		int k=0;
-		boolean stop =false;
-		System.out.println("Введіть назву факультету для видалення");
+	/**Giving the index of faculty with the specified name
+	 * !!!But name should exist in array!!!
+	 * */
+	private int positionInArray(String name) {
+		int result = 0;
+		for (int i = 0; i < this.facultiesArray.length; i++) {
+			boolean equals = DataInput.compareStrings(name, this.facultiesArray[i].fName);
+			if (equals == true) {
+				result = i;
+				break;
+			}
+		}
+		return result;
+	}
+	
+
+	public void facultyCreate() throws IOException {
+	System.out.println("Enter the name of new faculty : ");
+	String facultyN = DataInput.getString();
+	Faculty f = new Faculty(facultyN);
+	setFacultyToAray(f);
+	}
+
+	
+	public void facultyDelete() throws IOException {
+		boolean stop = false;
+		System.out.println("Enter the name of faculty for deleting : ");
 		String df = DataInput.getString();
-		Faculty delFaculty =checkAndSetFaculty(df);
-		/***/
-		while(delFaculty==null) {
-			System.out.println("Такого факультету не існує !\nЩоб вийти натисніть 0\n\nВведіть назву факультету для видалення");
+		Faculty faculty = checkAndSetFaculty(df);
+
+		while (faculty == null) {
+			System.out.println(
+					"There is no faculty with this name!!!\nTo exit press 0\n\nEnter the name of faculty for deleting : ");
 			df = DataInput.getString();
 			if (df.charAt(0) == '0') {
 				stop = true;
 				break;
 			}
-			delFaculty = null;
-			for (int i = 0; i < this.facultiesArray.length; i++) {
-				boolean equals = DataInput.compareStrings(df, this.facultiesArray[i].fName);
-				if (equals == true) {
-					k=i;
-					delFaculty = this.facultiesArray[i];
-					break;
-				}
-			}
+			faculty = checkAndSetFaculty(df);
 		}
-		if(stop==false) {
-			if(facultiesArray.length!=0) {
-				Faculty [] copy = new Faculty[facultiesArray.length-1];
-				for(int i=0;i<facultiesArray.length;i++) {
-					if(i!=k) {
-						if(i==facultiesArray.length-1) {
-							copy[i-1]=facultiesArray[i];
-						}
-						else copy[i]=facultiesArray[i];
-					}
+
+		if (stop == false && faculty != null) {
+			int k = positionInArray(df);
+			if (this.facultiesArray.length != 0) {
+				Faculty[] copy = new Faculty[this.facultiesArray.length - 1];
+				for (int i = 0, n = 0; i < this.facultiesArray.length; i++, n++) {
+					if (i != k) {
+						copy[n] = this.facultiesArray[i];
+					} else
+						n--;
 				}
-				facultiesArray = copy;
-			}
+				this.facultiesArray = new Faculty[copy.length];
+				for (int i = 0; i < copy.length; i++) {
+					this.facultiesArray[i] = copy[i];
+				}
+			} else
+				System.out.println("There is no faculties!!!");
 		}
-		
 	}
+	
+	
+	public void facultyEdit() throws IOException{
+		System.out.println("Enter the name of Faculty to edit :");
+		String name = DataInput.getString();
+		
+		Faculty faculty = checkAndSetFaculty(name);
+		boolean stop=false;
+		while(faculty==null) {
+			System.out.println("There is no faculty with this name!!!\nTo exit press 0\n\nEnter the name of Faculty to edit :");
+			name = DataInput.getString();
+			if (name.charAt(0) == '0') {
+				stop = true;
+				break;
+			}
+			faculty = checkAndSetFaculty(name);
+		}
+		if(stop ==false && faculty!=null) {
+			System.out.println("New name :");
+			String newName = DataInput.getString();
+			facultiesArray[positionInArray(name)] = new Faculty(newName);
+		}
+	}
+	
 
 	/**
 	 * Check if there is present faculty with such name and if result is true then
 	 * return this faculty
 	 */
-	
+
 	public Faculty checkAndSetFaculty(String name) {
 		Faculty result = null;
 		for (int i = 0; i < this.facultiesArray.length; i++) {
@@ -92,10 +135,10 @@ public class Arrays {
 	}
 
 	public String toString() {
-		String result="";
-		for(int i=0;i<facultiesArray.length;i++) {
-			result+="\n"+facultiesArray[i].fName;
+		String result = "";
+		for (int i = 0; i < facultiesArray.length; i++) {
+			result += "\n" + facultiesArray[i].fName;
 		}
-		return "Присутні такі факультети : "+result;
+		return "All faculties : " + result;
 	}
 }
