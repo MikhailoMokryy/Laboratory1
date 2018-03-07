@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5077df57-acaa-41c3-b63f-5a8ed538a28a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Lab/src/Main.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Lab/Lab.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,6 +69,17 @@
             <path>
               <item name="Laboratory1" type="b2602c69:ProjectViewProjectNode" />
               <item name="Laboratory1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Laboratory1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Laboratory1" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Laboratory1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Laboratory1" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -197,6 +208,14 @@
       <option name="presentableId" value="Default" />
       <updated>1520428946444</updated>
     </task>
+    <task id="LOCAL-00001" summary="создал главный класс">
+      <created>1520429136679</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1520429136679</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -231,6 +250,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="создал главный класс" />
+    <option name="LAST_COMMIT_MESSAGE" value="создал главный класс" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
