@@ -3,20 +3,20 @@ import lab_package.*;
 
 /**
  * @author Maxim Rybka ;
- * @author Misha Mokry; Написати програму, що буде формувати список студентів та
- *         викладачів університету НаУКМА.
- * 
- *         Відповідно мають бути реалізовані такі можливості роботи, як:
- * 
- *         Створити/видалити/редагувати факультет. Створити/видалити/редагувати
- *         кафедру факультета. Додати/видалити/редагувати студента/викладача до
- *         кафедри. Знайти студента/викладача за ПІБ, курсом або групою. Вивести
- *         всіх студентів впорядкованих за курсами. Вивести всіх
- *         студентів/викладачів факультета впорядкованих за алфавітом. Вивести
- *         всіх студентів кафедри впорядкованих за курсами. Вивести всіх
- *         студентів/викладачів кафедри впорядкованих за алфавітом. Вивести всіх
- *         студентів кафедри вказаного курсу. Вивести всіх студентів кафедри
- *         вказаного курсу впорядкованих за алфавітом.
+ * @author Misha Mokry; РќР°РїРёСЃР°С‚Рё РїСЂРѕРіСЂР°РјСѓ, С‰Рѕ Р±СѓРґРµ С„РѕСЂРјСѓРІР°С‚Рё СЃРїРёСЃРѕРє СЃС‚СѓРґРµРЅС‚С–РІ С‚Р°
+ *         РІРёРєР»Р°РґР°С‡С–РІ СѓРЅС–РІРµСЂСЃРёС‚РµС‚Сѓ РќР°РЈРљРњРђ.
+ *
+ *         Р’С–РґРїРѕРІС–РґРЅРѕ РјР°СЋС‚СЊ Р±СѓС‚Рё СЂРµР°Р»С–Р·РѕРІР°РЅС– С‚Р°РєС– РјРѕР¶Р»РёРІРѕСЃС‚С– СЂРѕР±РѕС‚Рё, СЏРє:
+ *
+ *         РЎС‚РІРѕСЂРёС‚Рё/РІРёРґР°Р»РёС‚Рё/СЂРµРґР°РіСѓРІР°С‚Рё С„Р°РєСѓР»СЊС‚РµС‚. РЎС‚РІРѕСЂРёС‚Рё/РІРёРґР°Р»РёС‚Рё/СЂРµРґР°РіСѓРІР°С‚Рё
+ *         РєР°С„РµРґСЂСѓ С„Р°РєСѓР»СЊС‚РµС‚Р°. Р”РѕРґР°С‚Рё/РІРёРґР°Р»РёС‚Рё/СЂРµРґР°РіСѓРІР°С‚Рё СЃС‚СѓРґРµРЅС‚Р°/РІРёРєР»Р°РґР°С‡Р° РґРѕ
+ *         РєР°С„РµРґСЂРё. Р—РЅР°Р№С‚Рё СЃС‚СѓРґРµРЅС‚Р°/РІРёРєР»Р°РґР°С‡Р° Р·Р° РџР†Р‘, РєСѓСЂСЃРѕРј Р°Р±Рѕ РіСЂСѓРїРѕСЋ. Р’РёРІРµСЃС‚Рё
+ *         РІСЃС–С… СЃС‚СѓРґРµРЅС‚С–РІ РІРїРѕСЂСЏРґРєРѕРІР°РЅРёС… Р·Р° РєСѓСЂСЃР°РјРё. Р’РёРІРµСЃС‚Рё РІСЃС–С…
+ *         СЃС‚СѓРґРµРЅС‚С–РІ/РІРёРєР»Р°РґР°С‡С–РІ С„Р°РєСѓР»СЊС‚РµС‚Р° РІРїРѕСЂСЏРґРєРѕРІР°РЅРёС… Р·Р° Р°Р»С„Р°РІС–С‚РѕРј. Р’РёРІРµСЃС‚Рё
+ *         РІСЃС–С… СЃС‚СѓРґРµРЅС‚С–РІ РєР°С„РµРґСЂРё РІРїРѕСЂСЏРґРєРѕРІР°РЅРёС… Р·Р° РєСѓСЂСЃР°РјРё. Р’РёРІРµСЃС‚Рё РІСЃС–С…
+ *         СЃС‚СѓРґРµРЅС‚С–РІ/РІРёРєР»Р°РґР°С‡С–РІ РєР°С„РµРґСЂРё РІРїРѕСЂСЏРґРєРѕРІР°РЅРёС… Р·Р° Р°Р»С„Р°РІС–С‚РѕРј. Р’РёРІРµСЃС‚Рё РІСЃС–С…
+ *         СЃС‚СѓРґРµРЅС‚С–РІ РєР°С„РµРґСЂРё РІРєР°Р·Р°РЅРѕРіРѕ РєСѓСЂСЃСѓ. Р’РёРІРµСЃС‚Рё РІСЃС–С… СЃС‚СѓРґРµРЅС‚С–РІ РєР°С„РµРґСЂРё
+ *         РІРєР°Р·Р°РЅРѕРіРѕ РєСѓСЂСЃСѓ РІРїРѕСЂСЏРґРєРѕРІР°РЅРёС… Р·Р° Р°Р»С„Р°РІС–С‚РѕРј.
  */
 
 
@@ -26,72 +26,73 @@ public class Tester {
 		while (true) {
 			boolean stop = false;
 			System.out.println(
-					"Натисніть :\n1)Додати/Видалити/Редагувати/Вивести факультети \n2)Додати/Видалити/Редагувати студента");
+					"РќР°С‚РёСЃРЅС–С‚СЊ :\n1)Р”РѕРґР°С‚Рё/Р’РёРґР°Р»РёС‚Рё/Р РµРґР°РіСѓРІР°С‚Рё/Р’РёРІРµСЃС‚Рё С„Р°РєСѓР»СЊС‚РµС‚Рё \n2)Р”РѕРґР°С‚Рё/Р’РёРґР°Р»РёС‚Рё/Р РµРґР°РіСѓРІР°С‚Рё СЃС‚СѓРґРµРЅС‚Р°");
 			int n = DataInput.getInt();
 			switch (n) {
-			/**
-			 * Work with students
-			 */
-			case 1:
-				System.out.println("Натисніть :\n1)Додати факультет \n2)Видалити факультет \n3)Редагувати факультет \n4)Вивести факультет");
-				int n1 = DataInput.getInt();
-				switch (n1) {
-				/**Create faculty*/
+				/**
+				 * Work with students
+				 */
 				case 1:
-					System.out.println("Введіть назву нового факультету : ");
-					String facultyN1 = DataInput.getString();
-					Faculty f = new Faculty(facultyN1);
-					faculties.setFacultyToAray(f);
-					break;
-				case 2:
-					
-				case 3:
-					
-				case 4:
-					System.out.println(faculties.toString());
-					break;
-				}
-				break;
-			/**
-			 * Work with faculties
-			 */
-			case 2:
-				System.out.println("Натисніть :\n1)Додати студента \nВидалити студента \nРедагувати студента");
-				int n2 = DataInput.getInt();
-				switch (n2) {
-				case 1:
-					System.out.println("Введіть ім'я студента :");
-					String name = DataInput.getString();
-					System.out.println("Введіть факультет :");
-					String facultyN = DataInput.getString();
-					Faculty faculty = faculties.checkAndSetFaculty(facultyN);
-					while (faculty == null) {
-						System.out.println("Такого факультету не існує !\nЩоб вийти натисніть 0\n\nВведіть факультет :");
-						facultyN = DataInput.getString();
-						if (facultyN.charAt(0) == '0') {
-							stop = true;
+					System.out.println("РќР°С‚РёСЃРЅС–С‚СЊ :\n1)Р”РѕРґР°С‚Рё С„Р°РєСѓР»СЊС‚РµС‚ \n2)Р’РёРґР°Р»РёС‚Рё С„Р°РєСѓР»СЊС‚РµС‚ \n3)Р РµРґР°РіСѓРІР°С‚Рё С„Р°РєСѓР»СЊС‚РµС‚ \n4)Р’РёРІРµСЃС‚Рё С„Р°РєСѓР»СЊС‚РµС‚");
+					int n1 = DataInput.getInt();
+					switch (n1) {
+						/**Create faculty*/
+						case 1:
+							System.out.println("Р’РІРµРґС–С‚СЊ РЅР°Р·РІСѓ РЅРѕРІРѕРіРѕ С„Р°РєСѓР»СЊС‚РµС‚Сѓ : ");
+							String facultyN1 = DataInput.getString();
+							Faculty f = new Faculty(facultyN1);
+							faculties.setFacultyToAray(f);
 							break;
-						}
-						faculty = faculties.checkAndSetFaculty(facultyN);
+						case 2:
+							faculties.facultyDelete();
+							break;
+						case 3:
+
+						case 4:
+							System.out.println(faculties.toString());
+							break;
 					}
-					if (stop == true)
-						break;
-					
-	
-					System.out.println("Введіть спеціальність :");
-					String specialtyN = DataInput.getString();
-	
-					System.out.println("Введіть курс :");
-					int course = DataInput.getInt();
-	
-					System.out.println("Введіть номер групи :");
-					int group = DataInput.getInt();
-	
-					Student s = new Student(name, faculty, specialtyN, course, group);
-					
 					break;
+				/**
+				 * Work with faculties
+				 */
 				case 2:
-				}
+					System.out.println("РќР°С‚РёСЃРЅС–С‚СЊ :\n1)Р”РѕРґР°С‚Рё СЃС‚СѓРґРµРЅС‚Р° \nР’РёРґР°Р»РёС‚Рё СЃС‚СѓРґРµРЅС‚Р° \nР РµРґР°РіСѓРІР°С‚Рё СЃС‚СѓРґРµРЅС‚Р°");
+					int n2 = DataInput.getInt();
+					switch (n2) {
+						case 1:
+							System.out.println("Р’РІРµРґС–С‚СЊ С–Рј'СЏ СЃС‚СѓРґРµРЅС‚Р° :");
+							String name = DataInput.getString();
+							System.out.println("Р’РІРµРґС–С‚СЊ С„Р°РєСѓР»СЊС‚РµС‚ :");
+							String facultyN = DataInput.getString();
+							Faculty faculty = faculties.checkAndSetFaculty(facultyN);
+							while (faculty == null) {
+								System.out.println("РўР°РєРѕРіРѕ С„Р°РєСѓР»СЊС‚РµС‚Сѓ РЅРµ С–СЃРЅСѓС” !\nР©РѕР± РІРёР№С‚Рё РЅР°С‚РёСЃРЅС–С‚СЊ 0\n\nР’РІРµРґС–С‚СЊ С„Р°РєСѓР»СЊС‚РµС‚ :");
+								facultyN = DataInput.getString();
+								if (facultyN.charAt(0) == '0') {
+									stop = true;
+									break;
+								}
+								faculty = faculties.checkAndSetFaculty(facultyN);
+							}
+							if (stop == true)
+								break;
+
+
+							System.out.println("Р’РІРµРґС–С‚СЊ СЃРїРµС†С–Р°Р»СЊРЅС–СЃС‚СЊ :");
+							String specialtyN = DataInput.getString();
+
+							System.out.println("Р’РІРµРґС–С‚СЊ РєСѓСЂСЃ :");
+							int course = DataInput.getInt();
+
+							System.out.println("Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РіСЂСѓРїРё :");
+							int group = DataInput.getInt();
+
+							Student s = new Student(name, faculty, specialtyN, course, group);
+
+							break;
+						case 2:
+					}
 
 			}
 		}
