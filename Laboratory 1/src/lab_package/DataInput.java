@@ -74,14 +74,11 @@ public final class DataInput {
 	}
 
 	public static boolean compareStrings(String first, String second) {
-		String copy;
 		boolean result = true;
-		if (first.length() < second.length()) {
-			copy = first;
-			first = second;
-			second = copy;
+		if (first.length() < second.length() || first.length() > second.length()) {
+			result = false;
 		}
-		for (int i = 0; i < second.length(); i++) {
+		else for (int i = 0; i < second.length(); i++) {
 			if (second.charAt(i) != first.charAt(i)) {
 				result = false;
 				break;

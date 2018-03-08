@@ -22,13 +22,13 @@ public class Faculty {
 	/**
 	 * Adding specialty to array of Specialties
 	 */
-	public void addFacultyObjectToFaculty(FacultyObject first) {
+	public void addFacultyObjectToFaculty(FacultyObject first , String name) {
 		if (first.indicator == 1) {
 			this.departmentArrayUp();
-			this.departmentArray[this.departmentArray.length - 1] = first;
+			this.departmentArray[this.departmentArray.length - 1] = new Department(name);
 		} else if (first.indicator == 2) {
 			this.specialtyArrayUp();
-			this.specialtyArray[this.specialtyArray.length - 1] = first;
+			this.specialtyArray[this.specialtyArray.length - 1] =new Specialty(name);
 		} else
 			System.out.println("\n\t!!!Something went wrong!!!!");
 	}
@@ -59,10 +59,9 @@ public class Faculty {
 	}
 	
 	public void createNewFacultyObject(FacultyObject object) throws IOException{
-		System.out.println("Eneter the name of new "+object.oName);
-		String name = DataInput.getString();
-		object.name = name;
-		addFacultyObjectToFaculty(object);
+		System.out.println("Enter the name of new "+object.oName);
+		String name =  DataInput.getString();
+		addFacultyObjectToFaculty(object , name);
 	}
 	
 	public void deleteFacultyObject(FacultyObject object)throws IOException{
