@@ -84,7 +84,7 @@ public class Tester {
 						faculties.facultiesArray[k].deleteFacultyObject(facultyObject);	
 					break;
 					case 3:
-						
+						faculties.facultiesArray[k].editFacultyObject(facultyObject);
 					break;
 					case 4:
 						System.out.println(faculties.facultiesArray[k].toString(facultyObject.indicator));	

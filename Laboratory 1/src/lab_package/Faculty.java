@@ -118,6 +118,35 @@ public class Faculty {
 		}
 	}
 	
+	public void editFacultyObject(FacultyObject object) throws IOException{
+		System.out.println("Enter the name of "+object.oName+" to edit :");
+		String name = DataInput.getString();
+		FacultyObject copy = object;
+		copy.name = name;
+		boolean exist  = checkFacultyObject(copy);
+		boolean stop=false;
+		while(exist==false) {
+			System.out.println("There is no "+object.oName+" with this name!!!\nTo exit press 0 \n\nEnter the name of "+object.oName+" to edit :");
+			name = DataInput.getString();
+			if (name.charAt(0) == '0') {
+				stop = true;
+				break;
+			}
+			exist  = checkFacultyObject(copy);
+		}
+		if(stop ==false && exist==true) {
+			System.out.println("New name :");
+			String newName = DataInput.getString();
+			if(object.indicator==1) {
+				this.departmentArray[positionInArray(object)].name = newName;
+			}
+			else if(object.indicator==2) {
+				this.specialtyArray[positionInArray(object)].name = newName;
+			}
+			else System.out.println("!!!!Indicator must be only 1 or 2!!!!");
+		}
+	}
+	
 	private boolean checkFacultyObject(FacultyObject object) {
 		boolean result=false;
 		if (object.indicator == 1) {
