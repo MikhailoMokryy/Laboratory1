@@ -5,7 +5,6 @@ import java.io.IOException;
 public class Faculty {
 	FacultyObject[] departmentArray = new FacultyObject[0];
 	FacultyObject[] specialtyArray = new FacultyObject[0];
-
 	String name;
 
 	/**
@@ -13,7 +12,7 @@ public class Faculty {
 	 */
 
 	public Faculty() {
-
+		
 	}
 
 	public Faculty(String name) {
@@ -64,6 +63,106 @@ public class Faculty {
 		String name = DataInput.getString();
 		object.name = name;
 		addFacultyObjectToFaculty(object);
+	}
+	
+	public void deleteFacultyObject(FacultyObject object)throws IOException{
+		boolean stop = false;
+		System.out.println("Enter the name of"+object.oName+" for deleting : ");
+		String name = DataInput.getString();
+		object.name = name;
+		
+
+		while (checkFacultyObject(object) == false) {
+			System.out.println(
+					"There is no "+object.oName+" with this name!!!\nTo exit press 0\n\nEnter the name of faculty for deleting : ");
+			name = DataInput.getString();
+			if (name.charAt(0) == '0') {
+				stop = true;
+				break;
+			}
+		}
+
+		if (stop == false) {
+			int k = positionInArray(object);
+			if(object.indicator==1) {
+				if (this.departmentArray.length != 0) {
+					FacultyObject[] copy = new FacultyObject[this.departmentArray.length - 1];
+					for (int i = 0, n = 0; i < this.departmentArray.length; i++, n++) {
+						if (i != k) {
+							copy[n] = this.departmentArray[i];
+						} else
+							n--;
+					}
+					this.departmentArray = new FacultyObject[copy.length];
+					for (int i = 0; i < copy.length; i++) {
+						this.departmentArray[i] = copy[i];
+					}
+				} else
+					System.out.println("There is no departments!!!");
+			}
+			else if(object.indicator==2) {
+				if (this.specialtyArray.length != 0) {
+					FacultyObject[] copy = new FacultyObject[this.specialtyArray.length - 1];
+					for (int i = 0, n = 0; i < this.specialtyArray.length; i++, n++) {
+						if (i != k) {
+							copy[n] = this.specialtyArray[i];
+						} else
+							n--;
+					}
+					this.specialtyArray = new FacultyObject[copy.length];
+					for (int i = 0; i < copy.length; i++) {
+						this.specialtyArray[i] = copy[i];
+					}
+				} else
+					System.out.println("There is no specialties!!!");
+			}
+		}
+	}
+	
+	private boolean checkFacultyObject(FacultyObject object) {
+		boolean result=false;
+		if (object.indicator == 1) {
+			for (int i = 0; i < this.departmentArray.length; i++) {
+				boolean equals = DataInput.compareStrings(object.name, this.departmentArray[i].name);
+				if (equals == true) {
+					result = true;
+					break;
+				}
+			}
+		}
+		else if(object.indicator==2) {
+			for (int i = 0; i < this.departmentArray.length; i++) {
+				boolean equals = DataInput.compareStrings(object.name, this.specialtyArray[i].name);
+				if (equals == true) {
+					result = true;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+	
+	private int positionInArray(FacultyObject object) {
+		int result = 0;
+		if(object.indicator==1) {
+			for (int i = 0; i < this.departmentArray.length; i++) {
+				boolean equals = DataInput.compareStrings(object.name, this.departmentArray[i].name);
+				if (equals == true) {
+					result = i;
+					break;
+				}
+			}
+		}
+		else if(object.indicator==2) {
+			for (int i = 0; i < this.specialtyArray.length; i++) {
+				boolean equals = DataInput.compareStrings(object.name, this.specialtyArray[i].name);
+				if (equals == true) {
+					result = i;
+					break;
+				}
+			}
+		}
+		return result;
 	}
 	
 	public String toString(int n) {

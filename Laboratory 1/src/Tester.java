@@ -51,14 +51,15 @@ public class Tester {
 			 * Work with department and specialty
 			 */
 			case 2:
+				boolean stopFO=true;
 				System.out.println("Enter the name of faculty : ");
 				String fname = DataInput.getString();
 				boolean exist = faculties.checkFaculty(fname);
-				if(exist == true) {
+				while(stopFO == true ) {
 					int k;
 					k = faculties.positionInArray(fname);
 					FacultyObject facultyObject = new Department();
-					System.out.println("Press :\n1)Work with Departments\n2)Work with Specialties");
+					System.out.println("Press :\n1)Work with Departments\n2)Work with Specialties \n3)Exit");
 					int n21 = DataInput.getInt();
 					switch(n21) {
 					case 1:
@@ -67,7 +68,12 @@ public class Tester {
 					case 2:
 						facultyObject = new Specialty();
 					break;
+					case 3:
+						stopFO = true;
+					break;
 					}
+					boolean stopDS = false;
+					while(stopDS == false) {
 					System.out.println("Press: \n1)Create \n2)Delete \n3)Edit \n4)Show all \n0)Exit");
 					int n2 = DataInput.getInt();
 					switch (n2) {
@@ -75,7 +81,7 @@ public class Tester {
 						faculties.facultiesArray[k].createNewFacultyObject(facultyObject);			
 					break;
 					case 2:
-							
+						faculties.facultiesArray[k].deleteFacultyObject(facultyObject);	
 					break;
 					case 3:
 							
@@ -85,9 +91,12 @@ public class Tester {
 						System.out.println(faculties.facultiesArray[k].toString(facultyObject.indicator));	
 					break;
 					case 0:
+						stopDS = true;
 					break;
 					}
+					}
 				}
+				
 			break;
 			case 3:
 				System.out.println("Press :\n1)Add student \n2)Delete  \n3)Edit student");
