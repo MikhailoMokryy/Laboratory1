@@ -30,16 +30,15 @@ public class Arrays {
 		for (int i = 0; i < len; i++) {
 			this.facultiesArray[i] = copy[i];
 		}
-
 	}
 	
 	/**Giving the index of faculty with the specified name
 	 * !!!But name should exist in array!!!
 	 * */
-	private int positionInArray(String name) {
+	public int positionInArray(String name) {
 		int result = 0;
 		for (int i = 0; i < this.facultiesArray.length; i++) {
-			boolean equals = DataInput.compareStrings(name, this.facultiesArray[i].fName);
+			boolean equals = DataInput.compareStrings(name, this.facultiesArray[i].name);
 			if (equals == true) {
 				result = i;
 				break;
@@ -101,7 +100,7 @@ public class Arrays {
 		Faculty faculty = checkAndSetFaculty(name);
 		boolean stop=false;
 		while(faculty==null) {
-			System.out.println("There is no faculty with this name!!!\nTo exit press 0\n\nEnter the name of Faculty to edit :");
+			System.out.println("There is no faculty with this name!!!\nTo exit press 0 \n\nEnter the name of Faculty to edit :");
 			name = DataInput.getString();
 			if (name.charAt(0) == '0') {
 				stop = true;
@@ -125,10 +124,39 @@ public class Arrays {
 	public Faculty checkAndSetFaculty(String name) {
 		Faculty result = null;
 		for (int i = 0; i < this.facultiesArray.length; i++) {
-			boolean equals = DataInput.compareStrings(name, this.facultiesArray[i].fName);
+			boolean equals = DataInput.compareStrings(name, this.facultiesArray[i].name);
 			if (equals == true) {
 				result = this.facultiesArray[i];
 				break;
+			}
+		}
+		return result;
+	}
+	
+	public boolean checkFaculty(String name) throws IOException{
+		boolean result=false;
+		boolean stop = false;
+		for (int i = 0; i < this.facultiesArray.length; i++) {
+			boolean equals = DataInput.compareStrings(name, this.facultiesArray[i].name);
+			if (equals == true) {
+				result = true;
+				break;
+			}
+		}
+		while(result == false && stop!=true) {
+			System.out.println("There is no faculty with this name!!!\nTo exit press 0\n\nEnter the name of Faculty to edit :");
+			name = DataInput.getString();
+			if (name.charAt(0) == '0') {
+				stop = true;
+				result = false;
+				break;
+			}
+			for (int i = 0; i < this.facultiesArray.length; i++) {
+				boolean equals = DataInput.compareStrings(name, this.facultiesArray[i].name);
+				if (equals == true) {
+					result = true;
+					break;
+				}
 			}
 		}
 		return result;
@@ -137,7 +165,7 @@ public class Arrays {
 	public String toString() {
 		String result = "";
 		for (int i = 0; i < facultiesArray.length; i++) {
-			result += "\n" + facultiesArray[i].fName;
+			result += "\n" + facultiesArray[i].name;
 		}
 		return "All faculties : " + result;
 	}

@@ -11,16 +11,16 @@ public class Tester {
 		Arrays faculties = new Arrays();
 		while (true) {
 			boolean stop = false;
-			System.out.println(
-					"Press :\n1)Add/Delete/Edit/Show faculties\n2)Add/Delete/Edit students");
+			System.out.println("Press :\n1)Work with faculties\n2)Work with Departments/Specialties");
 			int n = DataInput.getInt();
 			switch (n) {
+			
 			/**
-			 * Work with students
+			 * Work with faculties
 			 */
 			case 1:
 				System.out.println(
-						"\nPress :\n1)Add faculty \n2)Delete faculty \n3)Edit faculty \n4)Show all faculties");
+						"\nPress :\n1)Add faculty \n2)Delete faculty \n3)Edit faculty \n4)Show all faculties \n0)Exit");
 				int n1 = DataInput.getInt();
 				switch (n1) {
 				
@@ -43,16 +43,56 @@ public class Tester {
 				case 4:
 					System.out.println(faculties.toString());
 					break;
+				case 0: break;
 				}
 				break;
+			
 			/**
-			 * Work with faculties
+			 * Work with department and specialty
 			 */
 			case 2:
-				System.out.println(
-						"Press :\n1)Add student \n2)Delete  \n3)Edit student");
-				int n2 = DataInput.getInt();
-				switch (n2) {
+				System.out.println("Enter the name of faculty : ");
+				String fname = DataInput.getString();
+				boolean exist = faculties.checkFaculty(fname);
+				if(exist == true) {
+					int k;
+					k = faculties.positionInArray(fname);
+					FacultyObject facultyObject = new Department();
+					System.out.println("Press :\n1)Work with Departments\n2)Work with Specialties");
+					int n21 = DataInput.getInt();
+					switch(n21) {
+					case 1:
+						facultyObject = new Department();
+					break;
+					case 2:
+						facultyObject = new Specialty();
+					break;
+					}
+					System.out.println("Press: \n1)Create \n2)Delete \n3)Edit \n4)Show all \n0)Exit");
+					int n2 = DataInput.getInt();
+					switch (n2) {
+					case 1:
+						faculties.facultiesArray[k].createNewFacultyObject(facultyObject);			
+					break;
+					case 2:
+							
+					break;
+					case 3:
+							
+							
+					break;
+					case 4:
+						System.out.println(faculties.facultiesArray[k].toString(facultyObject.indicator));	
+					break;
+					case 0:
+					break;
+					}
+				}
+			break;
+			case 3:
+				System.out.println("Press :\n1)Add student \n2)Delete  \n3)Edit student");
+				int n3= DataInput.getInt();
+				switch (n3) {
 				case 1:
 					System.out.println("Enter the name of student :");
 					String name = DataInput.getString();

@@ -1,15 +1,15 @@
 package lab_package;
 
-public class Specialty {
+public class Specialty extends FacultyObject{
 	Student[] studentArray = new Student[0];
-	String sName;
-
-	Specialty() {
-
+	
+	public Specialty() {
+		this.indicator =2;// indicate that this object is specialty;
+		this.oName = "Specialty";
 	}
 
-	Specialty(String name) {
-		this.sName = name;
+	public Specialty(String name) {
+		this.name = name;
 	}
 
 	public void addStudentsToSpecialty(Student first) {
