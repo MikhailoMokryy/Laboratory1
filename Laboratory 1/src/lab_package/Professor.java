@@ -11,6 +11,8 @@ public class Professor extends People{
 	}
 	
 	public Professor(String name ,Faculty faculty,FacultyObject facultyObject) {
+		this.indificator = 2;
+		this.oName = "professor";
 		this.name = name;
 		if(facultyObject.indicator== 2) {
 			this.faculty = faculty;

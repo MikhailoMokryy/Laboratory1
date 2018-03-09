@@ -11,7 +11,7 @@ public class FacultyObject {
 	Professor[] professorsArray = new Professor[0];
 	
 	
-	FacultyObject(){
+	public FacultyObject(){
 		this.name = "Default";
 	}
 	

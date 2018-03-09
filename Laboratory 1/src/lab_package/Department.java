@@ -13,6 +13,8 @@ public class Department extends FacultyObject{
 	
 	public Department(String name) {
 		this.name = name;
+		this.indicator = 1;
+		this.oName = "Department";
 	}
 	
 	public void createProfessor(People people ,Faculty faculty,Department department) throws IOException{

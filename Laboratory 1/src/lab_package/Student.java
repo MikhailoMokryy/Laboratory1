@@ -12,6 +12,8 @@ public class Student extends People{
 	}
 
 	public Student(String name, Faculty faculty, FacultyObject facultyObject, int course, int group) {
+		this.indificator=1;
+		this.oName = "student";
 		this.name = name;
 		this.faculty = faculty;
 		if(facultyObject.indicator == 2) {

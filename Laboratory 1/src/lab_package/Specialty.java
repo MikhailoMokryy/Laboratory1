@@ -11,6 +11,8 @@ public class Specialty extends FacultyObject{
 	}
 
 	public Specialty(String name) {
+		this.indicator =2;// indicate that this object is specialty;
+		this.oName = "Specialty";
 		this.name = name;
 	}
 

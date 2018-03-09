@@ -138,16 +138,17 @@ public class Tester {
 							}
 							if(stop31!=true && faculty!=null) {
 								int k = faculties.positionInArray(facStr);
-								FacultyObject facultyObject;
+								FacultyObject facultyObject = new FacultyObject();
 								if(people.indificator == 2) {
 									System.out.println("Enter the department : ");
 									String depName = DataInput.getString();
 									facultyObject = new Department(depName);
 								}
-								else {
+								else if(people.indificator==1) {
 									System.out.println("Enter the specialty : ");
 									String specName = DataInput.getString();
 									facultyObject = new Specialty(specName);
+									System.out.println(""+facultyObject.oName);
 								}
 								while(faculties.facultiesArray[k].checkFacultyObject(facultyObject) == false) {
 										System.out.println("There is no such "+facultyObject.oName+"!!!\nPress 0 to exit \n\nEnter the "+facultyObject.oName+" of "+people.oName+" : ");
