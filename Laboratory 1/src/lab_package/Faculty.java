@@ -3,9 +3,9 @@ package lab_package;
 import java.io.IOException;
 
 public class Faculty {
-	FacultyObject[] departmentArray = new FacultyObject[0];
-	FacultyObject[] specialtyArray = new FacultyObject[0];
-	String name;
+	public FacultyObject[] departmentArray = new FacultyObject[0];
+	public FacultyObject[] specialtyArray = new FacultyObject[0];
+	public String name;
 
 	/**
 	 * Constructors
@@ -147,7 +147,7 @@ public class Faculty {
 		}
 	}
 	
-	private boolean checkFacultyObject(FacultyObject object) {
+	public boolean checkFacultyObject(FacultyObject object) {
 		boolean result=false;
 		if (object.indicator == 1) {
 			for (int i = 0; i < this.departmentArray.length; i++) {
@@ -170,7 +170,7 @@ public class Faculty {
 		return result;
 	}
 	
-	private int positionInArray(FacultyObject object) {
+	public int positionInArray(FacultyObject object) {
 		int result = 0;
 		if(object.indicator==1) {
 			for (int i = 0; i < this.departmentArray.length; i++) {

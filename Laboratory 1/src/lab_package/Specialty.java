@@ -14,11 +14,6 @@ public class Specialty extends FacultyObject{
 		this.name = name;
 	}
 
-	public void addStudentsToSpecialty(Student first) {
-		this.studentArrayUp();
-		this.studentArray[this.studentArray.length - 1] = first;
-	}
-
 	private void studentArrayUp() {
 		int len = studentArray.length;
 		Student[] copy = new Student[len];
@@ -32,6 +27,11 @@ public class Specialty extends FacultyObject{
 
 	}
 	
+	public void addStudentToStudentsArray(Student student) {
+			this.studentArrayUp();
+			this.studentArray[this.studentArray.length - 1] = student;
+	}
+	
 	public void createStudent(People people ,Faculty faculty,Specialty specialty) throws IOException{
 		System.out.println("Enter the name "+people.oName+":");
 		String name = DataInput.getString();
@@ -42,7 +42,7 @@ public class Specialty extends FacultyObject{
 		System.out.println("Enter the number of group :");
 		int group = DataInput.getInt();
 
-		Student s = new Student(name, faculty, specialty, course, group);
-
+		Student student = new Student(name, faculty, specialty, course, group);
+		addStudentToStudentsArray(student);
 	}
 }

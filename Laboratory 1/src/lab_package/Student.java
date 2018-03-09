@@ -11,12 +11,15 @@ public class Student extends People{
 		this.oName = "student";
 	}
 
-	public Student(String name, Faculty faculty, Specialty specialty, int course, int group) {
+	public Student(String name, Faculty faculty, FacultyObject facultyObject, int course, int group) {
 		this.name = name;
 		this.faculty = faculty;
-		this.specialty = specialty;
+		if(facultyObject.indicator == 2) {
+		this.specialty  = new Specialty(facultyObject.name); 
 		this.course = course;
 		this.group = group;
+		}
+		else System.out.println("Somrthing went wrong!!!");
 	}
 
 }
