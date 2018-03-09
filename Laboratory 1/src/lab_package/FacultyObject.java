@@ -11,4 +11,7 @@ public class FacultyObject {
 	FacultyObject(String name ){
 		this.name  = name ;
 	}
+	
+	
+	
 }

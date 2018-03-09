@@ -1,5 +1,7 @@
 package lab_package;
 
+import java.io.IOException;
+
 public class Specialty extends FacultyObject{
 	Student[] studentArray = new Student[0];
 	
@@ -27,6 +29,20 @@ public class Specialty extends FacultyObject{
 		for (int i = 0; i < len; i++) {
 			studentArray[i] = copy[i];
 		}
+
+	}
+	
+	public void createStudent(People people ,Faculty faculty,Specialty specialty) throws IOException{
+		System.out.println("Enter the name "+people.oName+":");
+		String name = DataInput.getString();
+
+		System.out.println("Enter the curse :");
+		int course = DataInput.getInt();
+
+		System.out.println("Enter the number of group :");
+		int group = DataInput.getInt();
+
+		Student s = new Student(name, faculty, specialty, course, group);
 
 	}
 }
