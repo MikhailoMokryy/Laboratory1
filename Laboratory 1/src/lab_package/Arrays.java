@@ -9,10 +9,14 @@ public class Arrays {
 		this.facultiesArray = new Faculty[0];
 		Faculty fen = new Faculty("FI");
 		setFacultyToAray(fen);
-		Specialty fiSpec = new Specialty("SE");
-		facultiesArray[0].addFacultyObjectToFaculty(fiSpec, fiSpec.name);
-		Student vitya = new Student("Vitya",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
-		facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(vitya);
+			Specialty fiSpec = new Specialty("SE");
+			facultiesArray[0].addFacultyObjectToFaculty(fiSpec, fiSpec.name);
+				Student vitya = new Student("Vitya",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(vitya);
+			fiSpec = new Specialty("Aplied Math");
+			facultiesArray[0].addFacultyObjectToFaculty(fiSpec, fiSpec.name);
+				Student andrey = new Student("Andrey",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[1].addStudentToStudentsArray(andrey);
 		Faculty fi = new Faculty("FEN");
 		setFacultyToAray(fi);
 	}
@@ -163,6 +167,174 @@ public class Arrays {
 		}
 		return result;
 	}
+	
+	
+	
+	/**Work with students and professors*/
+	
+	public void showAllPeople(People people) throws IOException{
+		boolean stop=false;
+		System.out.println("Enter the faculty of "+people.oName+" : ");
+		String facStr = DataInput.getString();
+		Faculty faculty2 = checkAndSetFaculty(facStr);
+		while(faculty2==null) {
+			System.out.println("There is no such faculty!!!\nPress 0 to exit \n\nEnter the faculty of "+people.oName+" : ");
+			facStr = DataInput.getString();
+			if(facStr.charAt(0)=='0') {
+				stop=true;
+				break;
+			}
+			faculty2 = checkAndSetFaculty(facStr);
+		}
+		if(stop == false) {
+			int k = positionInArray(faculty2.name);
+			boolean stop2=false;
+			FacultyObject facultyObject;
+			if(people.indicator == 2) {
+				System.out.println("Enter the department : ");
+				String depName = DataInput.getString();
+				facultyObject = new Department(depName);
+			}
+			else {
+				System.out.println("Enter the specialty : ");
+				String specName = DataInput.getString();
+				facultyObject = new Specialty(specName);
+			}
+			while(facultiesArray[k].checkFacultyObject(facultyObject) == false) {
+					System.out.println("There is no such "+facultyObject.oName+"!!!\nPress 0 to exit \n\nEnter the "+facultyObject.oName+" of "+people.oName+" : ");
+					String specDepName =DataInput.getString();
+					if(specDepName.charAt(0)=='0') {
+						stop2=true;
+						break;
+					}
+					if(people.indicator==1) {
+						facultyObject = new Specialty(specDepName);
+					}	
+					else if(people.indicator==2) {
+						facultyObject = new Department(specDepName);
+					}
+			}
+			if(stop2!=true) {
+				int num=facultiesArray[k].positionInArray(facultyObject);
+				if(facultyObject.indicator ==1) {
+					facultiesArray[k].departmentArray[num].toString(people);
+				}
+				else if(facultyObject.indicator ==2) {
+					System.out.println(facultiesArray[k].specialtyArray[num].toString(people));
+				}
+			}
+		}
+	}
+	
+	public void createPeople(People people) throws IOException{
+		boolean stop = false;
+		System.out.println("Enter the faculty of "+people.oName+" : ");
+		String facStr = DataInput.getString();
+		Faculty faculty = checkAndSetFaculty(facStr);
+		while(faculty==null) {
+			System.out.println("There is no such faculty!!!\nPress 0 to exit \n\nEnter the faculty of "+people.oName+" : ");
+			facStr = DataInput.getString();
+			if(facStr.charAt(0)=='0') {
+				stop=true;
+				break;
+			}
+			faculty = checkAndSetFaculty(facStr);
+		}
+		if(stop!=true && faculty!=null) {
+			int k = positionInArray(facStr);
+			FacultyObject facultyObject = new FacultyObject();
+			if(people.indicator == 2) {
+				System.out.println("Enter the department : ");
+				String depName = DataInput.getString();
+				facultyObject = new Department(depName);
+			}
+			else if(people.indicator==1) {
+				System.out.println("Enter the specialty : ");
+				String specName = DataInput.getString();
+				facultyObject = new Specialty(specName);
+				System.out.println(""+facultyObject.oName);
+			}
+			while(facultiesArray[k].checkFacultyObject(facultyObject) == false) {
+					System.out.println("There is no such "+facultyObject.oName+"!!!\nPress 0 to exit \n\nEnter the "+facultyObject.oName+" of "+people.oName+" : ");
+					String specDepName =DataInput.getString();
+					if(specDepName.charAt(0)=='0') {
+						stop=true;
+						break;
+					}
+					if(people.indicator==1) {
+						facultyObject = new Specialty(specDepName);
+					}	
+					else if(people.indicator==2) {
+						facultyObject = new Department(specDepName);
+					}
+			}
+			if(stop!=true) {
+				int num=facultiesArray[k].positionInArray(facultyObject);
+					if(facultyObject.indicator ==1) {
+						facultiesArray[k].departmentArray[num].createPeople(people,faculty,facultyObject);
+					}
+					else if(facultyObject.indicator ==2) {
+						facultiesArray[k].specialtyArray[num].createPeople(people,faculty,facultyObject);
+					}
+			}
+		}
+	}
+	
+	public void deletePeople(People people) throws IOException{
+		boolean stop = false;
+		System.out.println("Enter the faculty of "+people.oName+" : ");
+		String facStr = DataInput.getString();
+		Faculty faculty = checkAndSetFaculty(facStr);
+		while(faculty==null) {
+			System.out.println("There is no such faculty!!!\nPress 0 to exit \n\nEnter the faculty of "+people.oName+" : ");
+			facStr = DataInput.getString();
+			if(facStr.charAt(0)=='0') {
+				stop=true;
+				break;
+			}
+			faculty = checkAndSetFaculty(facStr);
+		}
+		if(stop!=true && faculty!=null) {
+			int k = positionInArray(facStr);
+			FacultyObject facultyObject = new FacultyObject();
+			if(people.indicator == 2) {
+				System.out.println("Enter the department : ");
+				String depName = DataInput.getString();
+				facultyObject = new Department(depName);
+			}
+			else if(people.indicator==1) {
+				System.out.println("Enter the specialty : ");
+				String specName = DataInput.getString();
+				facultyObject = new Specialty(specName);
+				System.out.println(""+facultyObject.oName);
+			}
+			while(facultiesArray[k].checkFacultyObject(facultyObject) == false) {
+					System.out.println("There is no such "+facultyObject.oName+"!!!\nPress 0 to exit \n\nEnter the "+facultyObject.oName+" of "+people.oName+" : ");
+					String specDepName =DataInput.getString();
+					if(specDepName.charAt(0)=='0') {
+						stop=true;
+						break;
+					}
+					if(people.indicator==1) {
+						facultyObject = new Specialty(specDepName);
+					}	
+					else if(people.indicator==2) {
+						facultyObject = new Department(specDepName);
+					}
+			}
+			if(stop!=true) {
+				int num=facultiesArray[k].positionInArray(facultyObject);
+					if(facultyObject.indicator ==1) {
+						facultiesArray[k].departmentArray[num].deletePeople(people);
+					}
+					else if(facultyObject.indicator ==2) {
+						facultiesArray[k].specialtyArray[num].deletePeople(people);
+					}
+			}
+		}
+	}
+	
+	
 	
 	public String toString() {
 		String result = "";

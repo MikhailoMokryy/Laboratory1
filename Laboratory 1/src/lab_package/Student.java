@@ -11,10 +11,10 @@ public class Student extends People{
 		this.oName = "student";
 	}
 	
-	public Student(String name,int course,int group) {
+	public Student(String name) {
 		this.name=name;
-		this.course = course;
-		this.group = group;
+		this.indicator=1;
+		this.oName = "student";
 	}
 
 	public Student(String name, Faculty faculty, FacultyObject facultyObject, int course, int group) {

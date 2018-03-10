@@ -19,6 +19,29 @@ public class FacultyObject {
 		this.name  = name ;
 	}
 	
+	private boolean checkPeople(People people){
+		boolean result=false;
+		if (people.indicator == 1) {
+			for (int i = 0; i < this.studentArray.length; i++) {
+				boolean equals = DataInput.compareStrings(people.name, this.studentArray[i].name);
+				if (equals == true) {
+					result = true;
+					break;
+				}
+			}
+		}
+		else if(people.indicator==2) {
+			for (int i = 0; i < this.professorsArray.length; i++) {
+				boolean equals = DataInput.compareStrings(people.name, this.professorsArray[i].name);
+				if (equals == true) {
+					result = true;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+	
 	public void createPeople(People people ,Faculty faculty,FacultyObject facultyObject) throws IOException{
 		System.out.println("Enter the name "+people.oName+":");
 		String name = DataInput.getString();
@@ -35,6 +58,81 @@ public class FacultyObject {
 			Professor s = new Professor(name, faculty, facultyObject);
 			
 		}
+	}
+	
+	public void deletePeople(People people) throws IOException{
+		boolean stop = false;
+		System.out.println("Enter the name of "+people.oName+" to delete:");
+		people.name = DataInput.getString();
+		
+		while (checkPeople(people) == false) {
+			System.out.println(
+					"There is no "+people.oName+" with this name!!!\nTo exit press 0\n\nEnter the name of faculty for deleting : ");
+			name = DataInput.getString();
+			if (name.charAt(0) == '0') {
+				stop = true;
+				break;
+			}
+		}
+
+		if (stop == false) {
+			int k = positionInArray(people);
+			if(people.indicator==1) {
+				if (this.studentArray.length != 0) {
+					Student[] copy = new Student[this.studentArray.length - 1];
+					for (int i = 0, n = 0; i < this.studentArray.length; i++, n++) {
+						if (i != k) {
+							copy[n] = this.studentArray[i];
+						} else
+							n--;
+					}
+					this.studentArray = new Student[copy.length];
+					for (int i = 0; i < copy.length; i++) {
+						this.studentArray[i] = copy[i];
+					}
+				} else
+					System.out.println("There is no departments!!!");
+			}
+			else if(people.indicator==2) {
+				if (this.professorsArray.length != 0) {
+					Professor[] copy = new Professor[this.professorsArray.length - 1];
+					for (int i = 0, n = 0; i < this.professorsArray.length; i++, n++) {
+						if (i != k) {
+							copy[n] = this.professorsArray[i];
+						} else
+							n--;
+					}
+					this.professorsArray = new Professor[copy.length];
+					for (int i = 0; i < copy.length; i++) {
+						this.professorsArray[i] = copy[i];
+					}
+				} else
+					System.out.println("There is no specialties!!!");
+			}
+		}
+	}
+	
+	private int positionInArray(People people) {
+		int result = 0;
+		if(people.indicator==1) {
+			for (int i = 0; i < this.studentArray.length; i++) {
+				boolean equals = DataInput.compareStrings(people.name, this.studentArray[i].name);
+				if (equals == true) {
+					result = i;
+					break;
+				}
+			}
+		}
+		else if(people.indicator==2) {
+			for (int i = 0; i < this.professorsArray.length; i++) {
+				boolean equals = DataInput.compareStrings(people.name, this.professorsArray[i].name);
+				if (equals == true) {
+					result = i;
+					break;
+				}
+			}
+		}
+		return result;
 	}
 	
 	public void studentArrayUp() {

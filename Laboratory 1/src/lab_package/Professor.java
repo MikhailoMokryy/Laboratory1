@@ -10,6 +10,12 @@ public class Professor extends People{
 		this.oName = "professor";
 	}
 	
+	public Professor(String name) {
+		this.name = name;
+		this.indicator = 2;
+		this.oName = "professor";
+	}
+	
 	public Professor(String name ,Faculty faculty,FacultyObject facultyObject) {
 		this.indicator = 2;
 		this.oName = "professor";
