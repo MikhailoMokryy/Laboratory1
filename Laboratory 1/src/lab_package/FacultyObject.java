@@ -1,6 +1,8 @@
 package lab_package;
 
 import java.io.IOException;
+import java.util.*;
+
 
 public class FacultyObject {
 	String name;
@@ -198,16 +200,86 @@ public class FacultyObject {
 			this.studentArray[this.studentArray.length - 1] = student;
 	}
 	
+	public void sortStudentsArray() {
+		boolean swap = true;
+		int j = 0;
+		do {
+			swap = false;
+
+			for (int i = 0; i < studentArray.length - 1; i++) {
+				    j=0;
+					char ch1 = studentArray[i].name.charAt(j);
+					char ch2 = studentArray[i+1].name.charAt(j);
+					while(ch1==ch2) {
+					if (j<studentArray[i].name.length()&&j<studentArray[i+1].name.length()) {
+						ch1 = studentArray[i].name.charAt(j);
+						ch2 = studentArray[i+1].name.charAt(j);
+						if(j!=0) {
+							if(Character.isUpperCase(ch1))
+								ch1= Character.toLowerCase(ch1);
+							if(Character.isUpperCase(ch2))
+								ch1= Character.toLowerCase(ch2);				
+						}
+						j++;
+				}else break;
+					}
+					if(ch1>ch2) {
+					j=0;
+					String str = studentArray[i].name;
+					studentArray[i].name = studentArray[i+1].name;
+					studentArray[i+1].name = str;
+					swap = true;
+					}
+			}
+		} while (swap);
+	}
+	
+	public void sortProfessorsArray() {
+		boolean swap = true;
+		int j = 0;
+		do {
+			swap = false;
+
+			for (int i = 0; i < professorsArray.length - 1; i++) {
+				    j=0;
+					char ch1 = professorsArray[i].name.charAt(j);
+					char ch2 = professorsArray[i+1].name.charAt(j);
+					while(ch1==ch2) {
+					if (j<professorsArray[i].name.length()&&j<professorsArray[i+1].name.length()) {
+						ch1 = professorsArray[i].name.charAt(j);
+						ch2 = professorsArray[i+1].name.charAt(j);
+						if(j!=0) {
+							if(Character.isUpperCase(ch1))
+								ch1= Character.toLowerCase(ch1);
+							if(Character.isUpperCase(ch2))
+								ch1= Character.toLowerCase(ch2);				
+						}
+						j++;
+				}else break;
+					}
+					if(ch1>ch2) {
+					j=0;
+					String str = professorsArray[i].name;
+					professorsArray[i].name = professorsArray[i+1].name;
+					professorsArray[i+1].name = str;
+					swap = true;
+					}
+			}
+		} while (swap);
+	}
+	
 	public String toString(People people) {
 		String result="";
 		if(people.indicator==1) {
 			result = "All students : ";
+			sortStudentsArray();
 			for(int i=0;i<studentArray.length;i++) {
 				result+="\n"+studentArray[i].name;
 			}
 		}
 		else if(people.indicator==2) {
 			result = "All professors : ";
+			sortProfessorsArray();
 			for(int i=0;i<professorsArray.length;i++) {
 				result+="\n"+professorsArray[i].name;
 			}
