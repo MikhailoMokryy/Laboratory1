@@ -7,18 +7,108 @@ public class Arrays {
 
 	public Arrays() {
 		this.facultiesArray = new Faculty[0];
-		Faculty fen = new Faculty("FI");
-		setFacultyToAray(fen);
-			Specialty fiSpec = new Specialty("SE");
-			facultiesArray[0].addFacultyObjectToFaculty(fiSpec, fiSpec.name);
-				Student vitya = new Student("Vitya",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
-				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(vitya);
-			fiSpec = new Specialty("Aplied Math");
-			facultiesArray[0].addFacultyObjectToFaculty(fiSpec, fiSpec.name);
-				Student andrey = new Student("Andrey",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
-				facultiesArray[0].specialtyArray[1].addStudentToStudentsArray(andrey);
-		Faculty fi = new Faculty("FEN");
+		Faculty fi = new Faculty("FI");
 		setFacultyToAray(fi);
+			Specialty fiSpec1 = new Specialty("SE");
+			facultiesArray[0].addFacultyObjectToFaculty(fiSpec1, fiSpec1.name);
+				Student s01 = new Student("Victor Alekseev",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s01);
+				Student s02 = new Student("Kirill Artemyev",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s02);
+				Student s03 = new Student("Georgiy Kulikov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s03);
+				Student s04 = new Student("Mikhail Orekhov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s04);
+				Student s05 = new Student("Kirill Platunov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s05);
+				Student s06 = new Student("Pakhom Afanasyev",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s06);
+				Student s07 = new Student("Vitaly Makarov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s07);
+				Student s08 = new Student("Ivan Suvorov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s08);
+				Student s09 = new Student("Ekaterina Bulgakova",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s09);
+				Student s010 = new Student("Alina Volkova",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s010);
+				Student s011 = new Student("Valery Soboleva",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s011);
+						
+				Specialty fiSpec2 = new Specialty("AM");
+			    facultiesArray[0].addFacultyObjectToFaculty(fiSpec2, fiSpec2.name);
+				Student s11 = new Student("Alina Bolshakova",facultiesArray[0],facultiesArray[0].specialtyArray[1],1,1);
+				facultiesArray[0].specialtyArray[1].addStudentToStudentsArray(s11);
+				Student s12 = new Student("Evgenia Zimina",facultiesArray[0],facultiesArray[0].specialtyArray[1],1,1);
+				facultiesArray[0].specialtyArray[1].addStudentToStudentsArray(s12);
+				Student s13 = new Student("Irina Belyaeva",facultiesArray[0],facultiesArray[0].specialtyArray[1],1,1);
+				facultiesArray[0].specialtyArray[1].addStudentToStudentsArray(s13);
+				Student s14 = new Student("Anton Vishnyakov",facultiesArray[0],facultiesArray[0].specialtyArray[1],1,1);
+				facultiesArray[0].specialtyArray[1].addStudentToStudentsArray(s14);
+				Student s15 = new Student("Andrey Terentyev",facultiesArray[0],facultiesArray[0].specialtyArray[1],1,1);
+				facultiesArray[0].specialtyArray[1].addStudentToStudentsArray(s15);
+				
+				Specialty fiSpec3 = new Specialty("CS");
+				facultiesArray[0].addFacultyObjectToFaculty(fiSpec3, fiSpec3.name);
+			    Student s21 = new Student("Vadim Koshelev",facultiesArray[0],facultiesArray[0].specialtyArray[2],1,1);
+				facultiesArray[0].specialtyArray[2].addStudentToStudentsArray(s21);
+				Student s22 = new Student("Kostya Gromov",facultiesArray[0],facultiesArray[0].specialtyArray[2],1,1);
+				facultiesArray[0].specialtyArray[2].addStudentToStudentsArray(s22);
+				Student s23 = new Student("Grigory Bolshakov",facultiesArray[0],facultiesArray[0].specialtyArray[2],1,1);
+				facultiesArray[0].specialtyArray[2].addStudentToStudentsArray(s23);
+				Student s24 = new Student("Ibrahim Pavlov",facultiesArray[0],facultiesArray[0].specialtyArray[2],1,1);
+				facultiesArray[0].specialtyArray[2].addStudentToStudentsArray(s24);
+				Student s25 = new Student("Katerina Molchanova",facultiesArray[0],facultiesArray[0].specialtyArray[2],1,1);
+				facultiesArray[0].specialtyArray[2].addStudentToStudentsArray(s25);
+				
+					
+				    Department d_math = new Department("Department of Math");
+				    facultiesArray[0].addFacultyObjectToFaculty(d_math,d_math.name);
+				    Professor p01 = new Professor("Dyachenko Sergey Nikolaevich",facultiesArray[0],facultiesArray[0].departmentArray[0]);
+				    facultiesArray[0].departmentArray[0].addProfessorToProfessorsArray(p01);
+				    Professor p02 = new Professor("Mitnik Yuri Vasilyevich",facultiesArray[0],facultiesArray[0].departmentArray[0]);
+				    facultiesArray[0].departmentArray[0].addProfessorToProfessorsArray(p02);
+				    Professor p03 = new Professor("Rusev Andrey Valerievich",facultiesArray[0],facultiesArray[0].departmentArray[0]);
+				    facultiesArray[0].departmentArray[0].addProfessorToProfessorsArray(p03);
+				     
+				    Department d_nt = new Department("Department of Network Technologies");
+				    facultiesArray[0].addFacultyObjectToFaculty(d_nt,d_nt.name);
+				    Professor p11 = new Professor("Franchuk Oleg Vasilievich",facultiesArray[0],facultiesArray[0].departmentArray[1]);
+				    facultiesArray[0].departmentArray[1].addProfessorToProfessorsArray(p11);
+				    Professor p12 = new Professor("Glibovets Andrey Nikolaevich",facultiesArray[0],facultiesArray[0].departmentArray[1]);
+				    facultiesArray[0].departmentArray[1].addProfessorToProfessorsArray(p12);
+				    Professor p13 = new Professor("Cherkasov Dmitry Ivanovich",facultiesArray[0],facultiesArray[0].departmentArray[1]);
+				    facultiesArray[0].departmentArray[1].addProfessorToProfessorsArray(p13);
+				    Professor p14 = new Professor("Sinitsina Rinata Borisovna",facultiesArray[0],facultiesArray[0].departmentArray[1]);
+				    facultiesArray[0].departmentArray[1].addProfessorToProfessorsArray(p14);
+				    
+				    Department d_ms = new Department("Department of Multimedia Systems");
+				    facultiesArray[0].addFacultyObjectToFaculty(d_ms,d_ms.name);
+				    Professor p21 = new Professor("Bublik Vladimir Vasilevich",facultiesArray[0],facultiesArray[0].departmentArray[2]);
+				    facultiesArray[0].departmentArray[2].addProfessorToProfessorsArray(p21);
+				    Professor p22 = new Professor("Afonin Andrey Nikolaevich",facultiesArray[0],facultiesArray[0].departmentArray[2]);
+				    facultiesArray[0].departmentArray[2].addProfessorToProfessorsArray(p22);
+				    Professor p23 = new Professor("Zhezherun Oleksandr Petrovich",facultiesArray[0],facultiesArray[0].departmentArray[2]);
+				    facultiesArray[0].departmentArray[2].addProfessorToProfessorsArray(p23);
+				    Professor p24 = new Professor("Pechkurova Olena Nikolaevna",facultiesArray[0],facultiesArray[0].departmentArray[2]);
+				    facultiesArray[0].departmentArray[2].addProfessorToProfessorsArray(p24);
+				    
+				    Department d_i = new Department("Department of Informatics");
+				    facultiesArray[0].addFacultyObjectToFaculty(d_i,d_i.name);
+				    Professor p31 = new Professor("Kirienko Oksana Valentinovna",facultiesArray[0],facultiesArray[0].departmentArray[3]);
+				    facultiesArray[0].departmentArray[3].addProfessorToProfessorsArray(p31);
+				    Professor p32 = new Professor("Glibovets Nikolay Nikolayevich",facultiesArray[0],facultiesArray[0].departmentArray[3]);
+				    facultiesArray[0].departmentArray[3].addProfessorToProfessorsArray(p32);
+				    Professor p33 = new Professor("Protsenko Vladimir Semenovich",facultiesArray[0],facultiesArray[0].departmentArray[3]);
+				    facultiesArray[0].departmentArray[3].addProfessorToProfessorsArray(p33);
+				     
+				     
+		Faculty fen = new Faculty("FEN");
+		setFacultyToAray(fen);
+		Faculty fgn = new Faculty("FGN");
+		setFacultyToAray(fgn);
+		
+		
+		
 	}
 
 	public void setFacultyToAray(Faculty first) {
