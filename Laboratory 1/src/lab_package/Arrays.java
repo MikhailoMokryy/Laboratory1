@@ -307,7 +307,8 @@ public class Arrays {
 			if(stop2!=true) {
 				int num=facultiesArray[k].positionInArray(facultyObject);
 				if(facultyObject.indicator ==1) {
-					facultiesArray[k].departmentArray[num].toString(people);
+					;
+					System.out.println(facultiesArray[k].departmentArray[num].toString(people));
 				}
 				else if(facultyObject.indicator ==2) {
 					System.out.println(facultiesArray[k].specialtyArray[num].toString(people));
@@ -419,6 +420,60 @@ public class Arrays {
 					}
 					else if(facultyObject.indicator ==2) {
 						facultiesArray[k].specialtyArray[num].deletePeople(people);
+					}
+			}
+		}
+	}
+	
+	public void editPeople(People people) throws IOException{
+		boolean stop = false;
+		System.out.println("Enter the faculty of "+people.oName+" : ");
+		String facStr = DataInput.getString();
+		Faculty faculty = checkAndSetFaculty(facStr);
+		while(faculty==null) {
+			System.out.println("There is no such faculty!!!\nPress 0 to exit \n\nEnter the faculty of "+people.oName+" : ");
+			facStr = DataInput.getString();
+			if(facStr.charAt(0)=='0') {
+				stop=true;
+				break;
+			}
+			faculty = checkAndSetFaculty(facStr);
+		}
+		if(stop!=true && faculty!=null) {
+			int k = positionInArray(facStr);
+			FacultyObject facultyObject = new FacultyObject();
+			if(people.indicator == 2) {
+				System.out.println("Enter the department : ");
+				String depName = DataInput.getString();
+				facultyObject = new Department(depName);
+			}
+			else if(people.indicator==1) {
+				System.out.println("Enter the specialty : ");
+				String specName = DataInput.getString();
+				facultyObject = new Specialty(specName);
+				System.out.println(""+facultyObject.oName);
+			}
+			while(facultiesArray[k].checkFacultyObject(facultyObject) == false) {
+					System.out.println("There is no such "+facultyObject.oName+"!!!\nPress 0 to exit \n\nEnter the "+facultyObject.oName+" of "+people.oName+" : ");
+					String specDepName =DataInput.getString();
+					if(specDepName.charAt(0)=='0') {
+						stop=true;
+						break;
+					}
+					if(people.indicator==1) {
+						facultyObject = new Specialty(specDepName);
+					}	
+					else if(people.indicator==2) {
+						facultyObject = new Department(specDepName);
+					}
+			}
+			if(stop!=true) {
+				int num=facultiesArray[k].positionInArray(facultyObject);
+					if(facultyObject.indicator ==1) {
+						facultiesArray[k].departmentArray[num].editPeople(people);
+					}
+					else if(facultyObject.indicator ==2) {
+						facultiesArray[k].specialtyArray[num].editPeople(people);
 					}
 			}
 		}

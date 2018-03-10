@@ -128,7 +128,7 @@ public class Tester {
 							faculties.deletePeople(people);
 						break;
 						case 3:
-							
+							faculties.editPeople(people);
 						break;
 						case 4:
 							faculties.showAllPeople(people);

@@ -112,6 +112,35 @@ public class FacultyObject {
 		}
 	}
 	
+	public void editPeople(People people) throws IOException{
+		System.out.println("Enter the name of "+people.oName+" to edit :");
+		String name = DataInput.getString();
+		People copy = people;
+		copy.name = name;
+		boolean exist  = checkPeople(copy);
+		boolean stop=false;
+		while(exist==false) {
+			System.out.println("There is no "+people.oName+" with this name!!!\nTo exit press 0 \n\nEnter the name of "+people.oName+" to edit :");
+			name = DataInput.getString();
+			if (name.charAt(0) == '0') {
+				stop = true;
+				break;
+			}
+			exist  = checkPeople(copy);
+		}
+		if(stop ==false && exist==true) {
+			System.out.println("New name :");
+			String newName = DataInput.getString();
+			if(people.indicator==1) {
+				this.studentArray[positionInArray(people)].name = newName;
+			}
+			else if(people.indicator==2) {
+				this.professorsArray[positionInArray(people)].name = newName;
+			}
+			else System.out.println("!!!!Indicator must be only 1 or 2!!!!");
+		}
+	}
+	
 	private int positionInArray(People people) {
 		int result = 0;
 		if(people.indicator==1) {
@@ -178,7 +207,7 @@ public class FacultyObject {
 			}
 		}
 		else if(people.indicator==2) {
-			result = "All professor : ";
+			result = "All professors : ";
 			for(int i=0;i<professorsArray.length;i++) {
 				result+="\n"+professorsArray[i].name;
 			}
