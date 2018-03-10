@@ -1,7 +1,7 @@
 package lab_package;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
 
 
 public class FacultyObject {
@@ -201,71 +201,58 @@ public class FacultyObject {
 	}
 	
 	public void sortStudentsArray() {
-		boolean swap = true;
-		int j = 0;
-		do {
-			swap = false;
-
-			for (int i = 0; i < studentArray.length - 1; i++) {
-				    j=0;
-					char ch1 = studentArray[i].name.charAt(j);
-					char ch2 = studentArray[i+1].name.charAt(j);
-					while(ch1==ch2) {
-					if (j<studentArray[i].name.length()&&j<studentArray[i+1].name.length()) {
-						ch1 = studentArray[i].name.charAt(j);
-						ch2 = studentArray[i+1].name.charAt(j);
-						if(j!=0) {
-							if(Character.isUpperCase(ch1))
-								ch1= Character.toLowerCase(ch1);
-							if(Character.isUpperCase(ch2))
-								ch1= Character.toLowerCase(ch2);				
-						}
-						j++;
-				}else break;
-					}
-					if(ch1>ch2) {
-					j=0;
-					String str = studentArray[i].name;
-					studentArray[i].name = studentArray[i+1].name;
-					studentArray[i+1].name = str;
-					swap = true;
-					}
+		 
+		int k =0;
+		for (int i = 0; i < studentArray.length; i++) {
+			char min = studentArray[i].name.charAt(k);
+			int min_i = i;
+			for (int j = i+1; j < studentArray.length; j++) {
+				
+				if (studentArray[j].name.charAt(k) == min) {
+					k++;
+					min = studentArray[i].name.charAt(k);
+				}
+				 if (studentArray[j].name.charAt(k) < min) {
+					min = studentArray[j].name.charAt(k);
+					min_i = j;
+				}
+				 k=0;
 			}
-		} while (swap);
+			
+			if (i != min_i) {
+				String str = studentArray[i].name;
+ 				studentArray[i].name = studentArray[min_i].name;
+				studentArray[min_i].name = str;
+			
+		      }
+		}
 	}
 	
 	public void sortProfessorsArray() {
-		boolean swap = true;
-		int j = 0;
-		do {
-			swap = false;
-
-			for (int i = 0; i < professorsArray.length - 1; i++) {
-				    j=0;
-					char ch1 = professorsArray[i].name.charAt(j);
-					char ch2 = professorsArray[i+1].name.charAt(j);
-					while(ch1==ch2) {
-					if (j<professorsArray[i].name.length()&&j<professorsArray[i+1].name.length()) {
-						ch1 = professorsArray[i].name.charAt(j);
-						ch2 = professorsArray[i+1].name.charAt(j);
-						if(j!=0) {
-							if(Character.isUpperCase(ch1))
-								ch1= Character.toLowerCase(ch1);
-							if(Character.isUpperCase(ch2))
-								ch1= Character.toLowerCase(ch2);				
-						}
-						j++;
-				}else break;
-					}
-					if(ch1>ch2) {
-					j=0;
-					String str = professorsArray[i].name;
-					professorsArray[i].name = professorsArray[i+1].name;
-					professorsArray[i+1].name = str;
-					swap = true;
-					}
+		int k =0;
+		for (int i = 0; i < professorsArray.length; i++) {
+			char min = professorsArray[i].name.charAt(k);
+			int min_i = i;
+			for (int j = i+1; j < professorsArray.length; j++) {
+				
+				if (professorsArray[j].name.charAt(k) == min) {
+					k++;
+					min = professorsArray[i].name.charAt(k);
+				}
+				 if (professorsArray[j].name.charAt(k) < min) {
+					min = professorsArray[j].name.charAt(k);
+					min_i = j;
+				}
+				 k=0;
 			}
-		} while (swap);
+			
+			if (i != min_i) {
+				String str = professorsArray[i].name;
+				professorsArray[i].name = professorsArray[min_i].name;
+				professorsArray[min_i].name = str;
+			
+		      }
+		}
 	}
 	
 	public String toString(People people) {
