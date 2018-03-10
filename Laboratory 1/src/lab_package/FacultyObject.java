@@ -208,7 +208,7 @@ public class FacultyObject {
 			int min_i = i;
 			for (int j = i+1; j < studentArray.length; j++) {
 				
-				if (studentArray[j].name.charAt(k) == min) {
+				while (studentArray[j].name.charAt(k) == min) {
 					k++;
 					min = studentArray[i].name.charAt(k);
 				}
@@ -235,7 +235,7 @@ public class FacultyObject {
 			int min_i = i;
 			for (int j = i+1; j < professorsArray.length; j++) {
 				
-				if (professorsArray[j].name.charAt(k) == min) {
+				while(professorsArray[j].name.charAt(k) == min) {
 					k++;
 					min = professorsArray[i].name.charAt(k);
 				}
