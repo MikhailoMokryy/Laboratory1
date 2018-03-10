@@ -7,12 +7,14 @@ public class Arrays {
 
 	public Arrays() {
 		this.facultiesArray = new Faculty[0];
-		Faculty fen = new Faculty("FEN");
+		Faculty fen = new Faculty("FI");
 		setFacultyToAray(fen);
-		Faculty fi = new Faculty("FI");
+		Specialty fiSpec = new Specialty("SE");
+		facultiesArray[0].addFacultyObjectToFaculty(fiSpec, fiSpec.name);
+		Student vitya = new Student("Vitya",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+		facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(vitya);
+		Faculty fi = new Faculty("FEN");
 		setFacultyToAray(fi);
-		Faculty fpvn = new Faculty("FPVN");
-		setFacultyToAray(fpvn);
 	}
 
 	public void setFacultyToAray(Faculty first) {
@@ -161,7 +163,7 @@ public class Arrays {
 		}
 		return result;
 	}
-
+	
 	public String toString() {
 		String result = "";
 		for (int i = 0; i < facultiesArray.length; i++) {

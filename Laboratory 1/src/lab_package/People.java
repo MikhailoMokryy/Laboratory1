@@ -3,7 +3,7 @@ package lab_package;
 public abstract class People {
 String name;
 int age;
-public int indificator=0;
+public int indicator=0;
 public String oName = "people";
 People(){
 	this.name = "Default";

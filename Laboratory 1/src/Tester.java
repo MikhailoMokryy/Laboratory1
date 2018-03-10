@@ -139,12 +139,12 @@ public class Tester {
 							if(stop31!=true && faculty!=null) {
 								int k = faculties.positionInArray(facStr);
 								FacultyObject facultyObject = new FacultyObject();
-								if(people.indificator == 2) {
+								if(people.indicator == 2) {
 									System.out.println("Enter the department : ");
 									String depName = DataInput.getString();
 									facultyObject = new Department(depName);
 								}
-								else if(people.indificator==1) {
+								else if(people.indicator==1) {
 									System.out.println("Enter the specialty : ");
 									String specName = DataInput.getString();
 									facultyObject = new Specialty(specName);
@@ -157,20 +157,20 @@ public class Tester {
 											stop31=true;
 											break;
 										}
-										if(people.indificator==1) {
+										if(people.indicator==1) {
 											facultyObject = new Specialty(specDepName);
 										}	
-										else if(people.indificator==2) {
+										else if(people.indicator==2) {
 											facultyObject = new Department(specDepName);
 										}
 								}
 								if(stop31!=true) {
 									int num=faculties.facultiesArray[k].positionInArray(facultyObject);
 										if(facultyObject.indicator ==1) {
-											faculties.facultiesArray[k].specialtyArray[num].createPeople(people,faculty,facultyObject);
+											faculties.facultiesArray[k].departmentArray[num].createPeople(people,faculty,facultyObject);
 										}
 										else if(facultyObject.indicator ==2) {
-											faculties.facultiesArray[k].departmentArray[num].createPeople(people,faculty,facultyObject);
+											faculties.facultiesArray[k].specialtyArray[num].createPeople(people,faculty,facultyObject);
 										}
 								}
 							}
@@ -199,7 +199,7 @@ public class Tester {
 								int k = faculties.positionInArray(faculty1.name);
 								boolean stop35=false;
 								FacultyObject facultyObject;
-								if(people.indificator == 2) {
+								if(people.indicator == 2) {
 									System.out.println("Enter the department : ");
 									String depName = DataInput.getString();
 									facultyObject = new Department(depName);
@@ -216,20 +216,20 @@ public class Tester {
 											stop35=true;
 											break;
 										}
-										if(people.indificator==1) {
+										if(people.indicator==1) {
 											facultyObject = new Specialty(specDepName);
 										}	
-										else if(people.indificator==2) {
+										else if(people.indicator==2) {
 											facultyObject = new Department(specDepName);
 										}
 								}
 								if(stop35!=true) {
 									int num=faculties.facultiesArray[k].positionInArray(facultyObject);
 									if(facultyObject.indicator ==1) {
-										System.out.println(faculties.facultiesArray[k].specialtyArray[num].toString(people));
+										System.out.println(faculties.facultiesArray[k].departmentArray[num].toString(people));
 									}
 									else if(facultyObject.indicator ==2) {
-										System.out.println(faculties.facultiesArray[k].departmentArray[num].toString(people));
+										System.out.println(faculties.facultiesArray[k].specialtyArray[num].toString(people));
 									}
 								}
 							}
@@ -245,5 +245,6 @@ public class Tester {
 			}
 		}
 }
+
 
 }

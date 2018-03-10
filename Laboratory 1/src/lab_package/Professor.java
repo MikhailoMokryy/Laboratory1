@@ -1,17 +1,17 @@
 package lab_package;
 
 public class Professor extends People{
-	private String name;
+	public String name;
 	private Faculty faculty = new Faculty();
 	private Department department;
 	public Professor(){
 		name = "";
-		this.indificator = 2;
+		this.indicator = 2;
 		this.oName = "professor";
 	}
 	
 	public Professor(String name ,Faculty faculty,FacultyObject facultyObject) {
-		this.indificator = 2;
+		this.indicator = 2;
 		this.oName = "professor";
 		this.name = name;
 		if(facultyObject.indicator== 2) {

@@ -159,7 +159,7 @@ public class Faculty {
 			}
 		}
 		else if(object.indicator==2) {
-			for (int i = 0; i < this.departmentArray.length; i++) {
+			for (int i = 0; i < this.specialtyArray.length; i++) {
 				boolean equals = DataInput.compareStrings(object.name, this.specialtyArray[i].name);
 				if (equals == true) {
 					result = true;

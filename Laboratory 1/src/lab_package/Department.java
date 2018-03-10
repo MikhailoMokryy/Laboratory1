@@ -16,10 +16,4 @@ public class Department extends FacultyObject{
 		this.indicator = 1;
 		this.oName = "Department";
 	}
-	
-	public void createProfessor(People people ,Faculty faculty,Department department) throws IOException{
-		System.out.println("Enter the name of professor :");
-		String name = DataInput.getString();
-		Professor s = new Professor(name, faculty, department);
-	}
 }

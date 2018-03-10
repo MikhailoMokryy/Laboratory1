@@ -22,7 +22,7 @@ public class FacultyObject {
 	public void createPeople(People people ,Faculty faculty,FacultyObject facultyObject) throws IOException{
 		System.out.println("Enter the name "+people.oName+":");
 		String name = DataInput.getString();
-		if(people.indificator ==1) {
+		if(people.indicator ==1) {
 			System.out.println("Enter the curse :");
 			int course = DataInput.getInt();
 	
@@ -31,13 +31,13 @@ public class FacultyObject {
 			Student student = new Student(name, faculty, facultyObject, course, group);
 			addStudentToStudentsArray(student);
 		}
-		else if(people.indificator ==2) {
+		else if(people.indicator ==2) {
 			Professor s = new Professor(name, faculty, facultyObject);
 			
 		}
 	}
 	
-	private void studentArrayUp() {
+	public void studentArrayUp() {
 		int len = studentArray.length;
 		Student[] copy = new Student[len];
 		for (int i = 0; i < len; i++) {
@@ -67,22 +67,22 @@ public class FacultyObject {
 	}
 	
 	public void addStudentToStudentsArray(Student student) {
-			this.studentArrayUp();
+			studentArrayUp();
 			this.studentArray[this.studentArray.length - 1] = student;
 	}
 	
 	public String toString(People people) {
 		String result="";
-		if(people.indificator==1) {
+		if(people.indicator==1) {
 			result = "All students : ";
 			for(int i=0;i<studentArray.length;i++) {
-				result+="\n"+studentArray[i];
+				result+="\n"+studentArray[i].name;
 			}
 		}
-		else if(people.indificator==2) {
+		else if(people.indicator==2) {
 			result = "All professor : ";
 			for(int i=0;i<professorsArray.length;i++) {
-				result+="\n"+professorsArray[i];
+				result+="\n"+professorsArray[i].name;
 			}
 		}
 		return result;
