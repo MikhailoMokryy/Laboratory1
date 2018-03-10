@@ -11,13 +11,16 @@ public class Tester {
 		Arrays faculties = new Arrays();
 		while (true) {
 			boolean stop = false;
-			System.out.println("Press :\n1)Work with faculties\n2)Work with Departments/Specialties \n3)Work with Students/Professors");
+			System.out.println("Press :\n1)Work with faculties\n2)Work with Departments/Specialties \n3)Work with Students/Professors\n0)Exit");
 			int n = DataInput.getInt();
 			switch (n) {
 
 			/**
 			 * Work with faculties
 			 */
+			case 0:{
+				return;
+			}
 			case 1: {
 				System.out.println(
 						"\nPress :\n1)Add faculty \n2)Delete faculty \n3)Edit faculty \n4)Show all faculties \n0)Exit");
