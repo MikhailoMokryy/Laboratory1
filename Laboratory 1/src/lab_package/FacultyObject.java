@@ -8,7 +8,6 @@ public class FacultyObject {
 	String name;
 	public int indicator=0;// indicate that this is FacultyObject;
 	public String oName ="FacultyObject";
-	private int checkCourse,checkGroup;
 	
 	Student[] studentArray = new Student[0];
 	Professor[] professorsArray = new Professor[0];
@@ -320,12 +319,12 @@ public class FacultyObject {
 	
 	
 	/**return string of student of input group and faculty*/
-	public String toStringAdv(People people) {
+	public String toStringAdv(People people, int course,int group) {
 		String result="";
 		if(people.indicator==1) {
 			result = "Elected students: ";
 			for(int i=0;i<studentArray.length;i++) {
-				if(studentArray[i].course==2&&studentArray[i].group==2) //работает только с интами checkCourse и checkGroup не работает class Arrays 298
+				if(studentArray[i].course==course&&studentArray[i].group==group) 
 				result+="\n"+studentArray[i].name+ "  course: "+studentArray[i].course+ "  group: "+studentArray[i].group ;
 			}
 		}
@@ -371,33 +370,5 @@ public class FacultyObject {
 		return result;
 	}
 
-	/**
-	 * @param checkCourse the checkCourse to set
-	 */
-	public void setCheckCourse(int checkCourse) {
-		this.checkCourse = checkCourse;
-	}
 
-	/**
-	 * @param checkGroup the checkGroup to set
-	 */
-	public void setCheckGroup(int checkGroup) {
-		this.checkGroup = checkGroup;
-	}
-
-	/**
-	 * @return the checkCourse
-	 */
-	public int getCheckCourse() {
-		return checkCourse;
-	}
-
-	/**
-	 * @return the checkGroup
-	 */
-	public int getCheckGroup() {
-		return checkGroup;
-	}
-
-	
 }

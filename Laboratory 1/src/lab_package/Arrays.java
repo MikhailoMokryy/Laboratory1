@@ -296,13 +296,13 @@ public class Arrays {
 				facultyObject = new Specialty(specName);
 	         //?
 				if(flag ==  1) {
-				FacultyObject fo = new FacultyObject();
+				
 				System.out.println("Enter the course: ");  
 				course  = DataInput.getInt();
-				 fo.setCheckCourse(course);
+			
 				System.out.println("Enter the group: ");
 				group = DataInput.getInt();
-				 fo.setCheckGroup(group);
+				
 				}
 				
 			}
@@ -327,7 +327,7 @@ public class Arrays {
 				}
 				else if(facultyObject.indicator ==2) {
 					if(flag==1) 
-					System.out.println(facultiesArray[k].specialtyArray[num].toStringAdv(people));
+					System.out.println(facultiesArray[k].specialtyArray[num].toStringAdv(people,course,group));
 					else if(flag==2)
 						System.out.println(facultiesArray[k].specialtyArray[num].toStringInOrder(people,true));	
 					else if(flag==3)
