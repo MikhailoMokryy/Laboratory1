@@ -32,37 +32,4 @@ public class Student extends People{
 	
 	
 
-
-	/**
-	 * @return the course
-	 */
-	public int getCourse() {
-		return course;
-	}
-
-	/**
-	 * @param course the course to set
-	 */
-	public void setCourse(int course) {
-		this.course = course;
-	}
-
-	/**
-	 * @return the group
-	 */
-	public int getGroup() {
-		return group;
-	}
-
-	/**
-	 * @param group the group to set
-	 */
-	public void setGroup(int group) {
-		this.group = group;
-	}
-	
-	public String toString() {
-		return "Name : "+this.name;
-	}
-
 }

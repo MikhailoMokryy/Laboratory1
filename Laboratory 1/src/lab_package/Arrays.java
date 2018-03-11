@@ -113,11 +113,13 @@ public class Arrays {
 		
 	}
 
+	/** method set faculty object to array*/
 	public void setFacultyToAray(Faculty first) {
 		this.facultiesArrayUp();
 		this.facultiesArray[this.facultiesArray.length - 1] = first;
 	}
 
+	/** method increase faculty array*/
 	private void facultiesArrayUp() {
 		int len = this.facultiesArray.length;
 		Faculty[] copy = new Faculty[len];
@@ -145,7 +147,7 @@ public class Arrays {
 		return result;
 	}
 	
-
+	/** method create faculty object*/
 	public void facultyCreate() throws IOException {
 	System.out.println("Enter the name of new faculty : ");
 	String facultyN = DataInput.getString();
@@ -153,7 +155,7 @@ public class Arrays {
 	setFacultyToAray(f);
 	}
 
-	
+	/** method delete faculty object*/
 	public void facultyDelete() throws IOException {
 		boolean stop = false;
 		System.out.println("Enter the name of faculty for deleting : ");
@@ -190,7 +192,7 @@ public class Arrays {
 		}
 	}
 	
-	
+	/** method edit faculty object*/
 	public void facultyEdit() throws IOException{
 		System.out.println("Enter the name of Faculty to edit :");
 		String name = DataInput.getString();
@@ -231,6 +233,7 @@ public class Arrays {
 		return result;
 	}
 	
+	/** method check faculty */
 	public boolean checkFaculty(String name) throws IOException{
 		boolean result=false;
 		boolean stop = false;
@@ -263,7 +266,6 @@ public class Arrays {
 	
 	
 	/**Work with students and professors*/
-	
 	public void showPeople(People people,int flag) throws IOException{
 		boolean stop=false;
 		System.out.println("Enter the faculty of "+people.oName+" : ");
@@ -292,15 +294,15 @@ public class Arrays {
 				System.out.println("Enter the specialty: ");
 				String specName = DataInput.getString();
 				facultyObject = new Specialty(specName);
-	          
-				
+	         //?
 				if(flag ==  1) {
+				FacultyObject fo = new FacultyObject();
 				System.out.println("Enter the course: ");  
 				course  = DataInput.getInt();
-				facultyObject.setCheckCourse(course);
+				 fo.setCheckCourse(course);
 				System.out.println("Enter the group: ");
 				group = DataInput.getInt();
-				facultyObject.setCheckGroup(group);
+				 fo.setCheckGroup(group);
 				}
 				
 			}
@@ -339,7 +341,7 @@ public class Arrays {
 	
 	}
 
-	
+	/** method create student or professor object*/
 	public void createPeople(People people) throws IOException{
 		boolean stop = false;
 		System.out.println("Enter the faculty of "+people.oName+" : ");
@@ -394,6 +396,7 @@ public class Arrays {
 		}
 	}
 	
+	/**method delete student or professor object*/
 	public void deletePeople(People people) throws IOException{
 		boolean stop = false;
 		System.out.println("Enter the faculty of "+people.oName+" : ");
@@ -448,6 +451,7 @@ public class Arrays {
 		}
 	}
 	
+	/**method edit student or professor object*/
 	public void editPeople(People people) throws IOException{
 		boolean stop = false;
 		System.out.println("Enter the faculty of "+people.oName+" : ");
@@ -504,7 +508,7 @@ public class Arrays {
 	
 
 	
-	
+	/** method return string*/
 	public String toString() {
 		String result = "";
 		for (int i = 0; i < facultiesArray.length; i++) {

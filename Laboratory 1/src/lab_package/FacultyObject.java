@@ -22,6 +22,7 @@ public class FacultyObject {
 		this.name  = name ;
 	}
 	
+	/**method  check if student or professor exist*/
 	private boolean checkPeople(People people){
 		boolean result=false;
 		if (people.indicator == 1) {
@@ -45,6 +46,7 @@ public class FacultyObject {
 		return result;
 	}
 	
+	/**method create student or professor*/
 	public void createPeople(People people ,Faculty faculty,FacultyObject facultyObject) throws IOException{
 		System.out.println("Enter the name "+people.oName+":");
 		String name = DataInput.getString();
@@ -63,6 +65,8 @@ public class FacultyObject {
 		}
 	}
 	
+	
+	/**method delete student or professor*/
 	public void deletePeople(People people) throws IOException{
 		boolean stop = false;
 		System.out.println("Enter the name of "+people.oName+" to delete:");
@@ -115,6 +119,8 @@ public class FacultyObject {
 		}
 	}
 	
+	
+	/**method edit student or professor*/
 	public void editPeople(People people) throws IOException{
 		System.out.println("Enter the name of "+people.oName+" to edit :");
 		String name = DataInput.getString();
@@ -144,6 +150,7 @@ public class FacultyObject {
 		}
 	}
 	
+	/**method find position of array element*/
 	private int positionInArray(People people) {
 		int result = 0;
 		if(people.indicator==1) {
@@ -167,6 +174,7 @@ public class FacultyObject {
 		return result;
 	}
 	
+	/**method increase student array*/
 	public void studentArrayUp() {
 		int len = studentArray.length;
 		Student[] copy = new Student[len];
@@ -179,6 +187,7 @@ public class FacultyObject {
 		}
 	}
 	
+	/**method increase professor array*/
 	private void professorArrayUp() {
 		int len = professorsArray.length;
 		Professor[] copy = new Professor[len];
@@ -191,16 +200,20 @@ public class FacultyObject {
 		}
 	}
 	
+	/**method add professor to professor array*/
 	public void addProfessorToProfessorsArray(Professor professor) {
 		this.professorArrayUp();
 		this.professorsArray[this.professorsArray.length - 1] = professor;
 	}
 	
+	/**method add student to student array*/
 	public void addStudentToStudentsArray(Student student) {
 			studentArrayUp();
 			this.studentArray[this.studentArray.length - 1] = student;
 	}
 	
+	
+	/**method sort all  students in alphabetical order*/
 	private void sortStudentsArray() {
 		 
 		int k =0;
@@ -229,6 +242,7 @@ public class FacultyObject {
 		}
 	}
 	
+	/**method sort student by course*/
 	private void sortStudentsArrayByCourse() {
 		for (int i = 0; i < studentArray.length; i++) {
 			int min = Integer.valueOf(studentArray[i].course);
@@ -251,6 +265,8 @@ public class FacultyObject {
 		}
 	}
 	
+	
+	/**method sort student array by group*/
 	private void sortStudentsArrayByGroup() {
 		for (int i = 0; i < studentArray.length; i++) {
 			int min = Integer.valueOf(studentArray[i].group);
@@ -273,6 +289,8 @@ public class FacultyObject {
 		}
 	}
 	
+	
+	/**method sort professors array in alphabetical order*/
 	private void sortProfessorsArray() {
 		int k =0;
 		for (int i = 0; i < professorsArray.length; i++) {
@@ -300,18 +318,22 @@ public class FacultyObject {
 		}
 	}
 	
+	
+	/**return string of student of input group and faculty*/
 	public String toStringAdv(People people) {
 		String result="";
 		if(people.indicator==1) {
 			result = "Elected students: ";
 			for(int i=0;i<studentArray.length;i++) {
-				if(studentArray[i].course==2&&studentArray[i].group==2 ) //работает только с интами checkCourse и checkGroup не работает
-				result+="\n"+studentArray[i].name;
+				if(studentArray[i].course==2&&studentArray[i].group==2) //работает только с интами checkCourse и checkGroup не работает class Arrays 298
+				result+="\n"+studentArray[i].name+ "  course: "+studentArray[i].course+ "  group: "+studentArray[i].group ;
 			}
 		}
 		return result;
 	}
 	
+	
+	/**return string of student in increasing order*/
 	public String toStringInOrder(People people,boolean check) {
 		String result="";
 			result = "All students in increasing order: ";

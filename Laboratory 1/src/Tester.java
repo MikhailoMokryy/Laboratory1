@@ -140,7 +140,8 @@ public class Tester {
 						break;
 						case 4:
 							if(flag==false) {
-								faculties.showPeople(people, 0);
+								Arrays faculties1 = new Arrays();
+								faculties1.showPeople(people, 0);
 							}else {
 							boolean stop3=false;
 							while(stop3 ==false &&stop2 !=true) {
@@ -148,26 +149,29 @@ public class Tester {
 							int input = DataInput.getInt();
 							switch(input) {
 							case 1:
-								faculties.showPeople(people, 0);
+								Arrays faculties1 = new Arrays();
+								faculties1.showPeople(people, 0);
 							break;
 							case 2:
-								faculties.showPeople(people, 1);
+								Arrays faculties2 = new Arrays();
+								faculties2.showPeople(people, 1);
 							break;
 							case 3:
-								faculties.showPeople(people, 2);
+								Arrays faculties3 = new Arrays();
+								faculties3.showPeople(people, 2);
 							break;
 							case 4:
-								faculties.showPeople(people, 3);
+								Arrays faculties4 = new Arrays();
+								faculties4.showPeople(people, 3);
 							break;
 							case 0:
 								stop3 = true;
 								break;
 								}
-							}
+							  }
 							}
 						break;
 						
-	
 						case 0:
 							stop2 = true;
 						break;
