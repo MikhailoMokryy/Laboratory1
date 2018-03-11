@@ -201,7 +201,7 @@ public class FacultyObject {
 			this.studentArray[this.studentArray.length - 1] = student;
 	}
 	
-	public void sortStudentsArray() {
+	private void sortStudentsArray() {
 		 
 		int k =0;
 		for (int i = 0; i < studentArray.length; i++) {
@@ -229,7 +229,51 @@ public class FacultyObject {
 		}
 	}
 	
-	public void sortProfessorsArray() {
+	private void sortStudentsArrayByCourse() {
+		for (int i = 0; i < studentArray.length; i++) {
+			int min = Integer.valueOf(studentArray[i].course);
+			int min_i = i;
+			for (int j = i + 1; j < studentArray.length; j++) {
+				if (Integer.valueOf(studentArray[j].course) < min) {
+					min = Integer.valueOf(studentArray[j].course);
+					min_i = j;
+				}
+			}
+			if (i != min_i) {
+				int tmp =studentArray[i].course;
+				studentArray[i].course = studentArray[min_i].course;
+				studentArray[min_i].course = tmp;
+
+				String str = studentArray[i].name;
+ 				studentArray[i].name = studentArray[min_i].name;
+				studentArray[min_i].name = str;
+			}
+		}
+	}
+	
+	private void sortStudentsArrayByGroup() {
+		for (int i = 0; i < studentArray.length; i++) {
+			int min = Integer.valueOf(studentArray[i].group);
+			int min_i = i;
+			for (int j = i + 1; j < studentArray.length; j++) {
+				if (Integer.valueOf(studentArray[j].group) < min) {
+					min = Integer.valueOf(studentArray[j].group);
+					min_i = j;
+				}
+			}
+			if (i != min_i) {
+				int tmp =studentArray[i].group;
+				studentArray[i].group= studentArray[min_i].group;
+				studentArray[min_i].group = tmp;
+
+				String str = studentArray[i].name;
+ 				studentArray[i].name = studentArray[min_i].name;
+				studentArray[min_i].name = str;
+			}
+		}
+	}
+	
+	private void sortProfessorsArray() {
 		int k =0;
 		for (int i = 0; i < professorsArray.length; i++) {
 			char min = professorsArray[i].name.charAt(k);
@@ -256,18 +300,47 @@ public class FacultyObject {
 		}
 	}
 	
+	public String toStringAdv(People people) {
+		String result="";
+		if(people.indicator==1) {
+			result = "Elected students: ";
+			for(int i=0;i<studentArray.length;i++) {
+				if(studentArray[i].course==2&&studentArray[i].group==2 ) //работает только с интами checkCourse и checkGroup не работает
+				result+="\n"+studentArray[i].name;
+			}
+		}
+		return result;
+	}
+	
+	public String toStringInOrder(People people,boolean check) {
+		String result="";
+			result = "All students in increasing order: ";
+			if(check == false) {
+				sortStudentsArrayByGroup();
+				for(int i=0;i<studentArray.length;i++) {
+					result+="\n"+studentArray[i].name+ " group: "+studentArray[i].group;
+				}
+			}else {
+			sortStudentsArrayByCourse();
+			for(int i=0;i<studentArray.length;i++) {
+				result+="\n"+studentArray[i].name+ " course: "+studentArray[i].course;
+			}
+		}
+		
+		return result;
+	}
+	
 	public String toString(People people) {
 		String result="";
 		if(people.indicator==1) {
-			result = "All students : ";
+			result = "All students: ";
 			sortStudentsArray();
 			for(int i=0;i<studentArray.length;i++) {
-				//if(studentArray[i].getCourse()==checkCourse&&studentArray[i].getGroup()==checkGroup)
 				result+="\n"+studentArray[i].name;
 			}
 		}
 		else if(people.indicator==2) {
-			result = "All professors : ";
+			result = "All professors: ";
 			sortProfessorsArray();
 			for(int i=0;i<professorsArray.length;i++) {
 				result+="\n"+professorsArray[i].name;
@@ -288,6 +361,20 @@ public class FacultyObject {
 	 */
 	public void setCheckGroup(int checkGroup) {
 		this.checkGroup = checkGroup;
+	}
+
+	/**
+	 * @return the checkCourse
+	 */
+	public int getCheckCourse() {
+		return checkCourse;
+	}
+
+	/**
+	 * @return the checkGroup
+	 */
+	public int getCheckGroup() {
+		return checkGroup;
 	}
 
 	

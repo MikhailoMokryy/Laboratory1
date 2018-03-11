@@ -7,6 +7,9 @@ import lab_package.*;
  */
 
 public class Tester {
+	
+	private static boolean flag;
+	
 	public static void main(String[] args) throws IOException {
 		Arrays faculties = new Arrays();
 		while (true) {
@@ -111,9 +114,11 @@ public class Tester {
 					switch(in) {
 					case 1:
 						people = new Student();
+						flag = true;
 					break;
 					case 2:
 						people = new Professor();
+						flag = false;
 					break;
 					case 0:
 						stop1 = true;
@@ -134,19 +139,32 @@ public class Tester {
 							faculties.editPeople(people);
 						break;
 						case 4:
-							System.out.println("Press : \n1)Show all \n2)Show by course and name \n0)Exit");
+							if(flag==false) {
+								faculties.showPeople(people, 0);
+							}else {
+							boolean stop3=false;
+							while(stop3 ==false &&stop2 !=true) {
+							System.out.println("Press : \n1)Show all \n2)Show by course and group \n3)Show by course in increasing order \n4)Show by group in increasing order\n0)Exit");
 							int input = DataInput.getInt();
 							switch(input) {
 							case 1:
-								faculties.showPeople(people, true);
+								faculties.showPeople(people, 0);
 							break;
 							case 2:
-								faculties.showPeople(people, false);
+								faculties.showPeople(people, 1);
+							break;
+							case 3:
+								faculties.showPeople(people, 2);
+							break;
+							case 4:
+								faculties.showPeople(people, 3);
 							break;
 							case 0:
+								stop3 = true;
 								break;
+								}
 							}
-							
+							}
 						break;
 						
 	

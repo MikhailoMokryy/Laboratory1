@@ -13,27 +13,27 @@ public class Arrays {
 		setFacultyToAray(fi);
 			Specialty fiSpec1 = new Specialty("SE");
 			facultiesArray[0].addFacultyObjectToFaculty(fiSpec1, fiSpec1.name);
-				Student s01 = new Student("Victor Alekseev",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s01 = new Student("Victor Alekseev",facultiesArray[0],facultiesArray[0].specialtyArray[0],2,1);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s01);
-				Student s02 = new Student("Kirill Artemyev",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s02 = new Student("Kirill Artemyev",facultiesArray[0],facultiesArray[0].specialtyArray[0],2,3);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s02);
 				Student s03 = new Student("Georgiy Kulikov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s03);
-				Student s04 = new Student("Mikhail Orekhov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s04 = new Student("Mikhail Orekhov",facultiesArray[0],facultiesArray[0].specialtyArray[0],3,4);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s04);
 				Student s05 = new Student("Kirill Platunov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s05);
-				Student s06 = new Student("Pakhom Afanasyev",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s06 = new Student("Pakhom Afanasyev",facultiesArray[0],facultiesArray[0].specialtyArray[0],3,1);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s06);
-				Student s07 = new Student("Vitaly Makarov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s07 = new Student("Vitaly Makarov",facultiesArray[0],facultiesArray[0].specialtyArray[0],5,1);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s07);
-				Student s08 = new Student("Ivan Suvorov",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s08 = new Student("Ivan Suvorov",facultiesArray[0],facultiesArray[0].specialtyArray[0],2,3);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s08);
 				Student s09 = new Student("Ekaterina Bulgakova",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s09);
-				Student s010 = new Student("Alina Volkova",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s010 = new Student("Alina Volkova",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,2);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s010);
-				Student s011 = new Student("Valerya Soboleva",facultiesArray[0],facultiesArray[0].specialtyArray[0],1,1);
+				Student s011 = new Student("Valerya Soboleva",facultiesArray[0],facultiesArray[0].specialtyArray[0],2,2);
 				facultiesArray[0].specialtyArray[0].addStudentToStudentsArray(s011);
 						
 				Specialty fiSpec2 = new Specialty("AM");
@@ -264,7 +264,7 @@ public class Arrays {
 	
 	/**Work with students and professors*/
 	
-	public void showPeople(People people,boolean flag) throws IOException{
+	public void showPeople(People people,int flag) throws IOException{
 		boolean stop=false;
 		System.out.println("Enter the faculty of "+people.oName+" : ");
 		String facStr = DataInput.getString();
@@ -283,16 +283,19 @@ public class Arrays {
 			boolean stop2=false;
 			FacultyObject facultyObject;
 			if(people.indicator == 2) {
+				
 				System.out.println("Enter the department : ");
 				String depName = DataInput.getString();
 				facultyObject = new Department(depName);
 			}
 			else {
-				System.out.println("Enter the specialty : ");
+				System.out.println("Enter the specialty: ");
 				String specName = DataInput.getString();
 				facultyObject = new Specialty(specName);
-				if(flag == false) {
-				System.out.println("Enter the course : ");  
+	          
+				
+				if(flag ==  1) {
+				System.out.println("Enter the course: ");  
 				course  = DataInput.getInt();
 				facultyObject.setCheckCourse(course);
 				System.out.println("Enter the group: ");
@@ -318,16 +321,22 @@ public class Arrays {
 			if(stop2!=true) {
 				int num=facultiesArray[k].positionInArray(facultyObject);
 				if(facultyObject.indicator ==1) {
-					
-					System.out.println(facultiesArray[k].departmentArray[num].toString(people));
+						System.out.println(facultiesArray[k].departmentArray[num].toString(people));
 				}
 				else if(facultyObject.indicator ==2) {
-				
+					if(flag==1) 
+					System.out.println(facultiesArray[k].specialtyArray[num].toStringAdv(people));
+					else if(flag==2)
+						System.out.println(facultiesArray[k].specialtyArray[num].toStringInOrder(people,true));	
+					else if(flag==3)
+						System.out.println(facultiesArray[k].specialtyArray[num].toStringInOrder(people,false));
+					else if(flag==0)
 					System.out.println(facultiesArray[k].specialtyArray[num].toString(people));
-					
 				}
 			}
 		}
+		flag=0;
+	
 	}
 
 	
@@ -493,6 +502,7 @@ public class Arrays {
 		}
 	}
 	
+
 	
 	
 	public String toString() {

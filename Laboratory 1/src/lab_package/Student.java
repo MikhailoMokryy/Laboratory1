@@ -2,7 +2,7 @@ package lab_package;
 
 public class Student extends People{
 	public String name;
-	private int course, group;
+	public int course, group;
 	private Faculty faculty = new Faculty();
 	private Specialty specialty;
 
@@ -32,19 +32,6 @@ public class Student extends People{
 	
 	
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	/**
 	 * @return the course
