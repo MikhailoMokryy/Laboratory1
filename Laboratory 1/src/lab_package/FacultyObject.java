@@ -8,6 +8,7 @@ public class FacultyObject {
 	String name;
 	public int indicator=0;// indicate that this is FacultyObject;
 	public String oName ="FacultyObject";
+	private int checkCourse,checkGroup;
 	
 	Student[] studentArray = new Student[0];
 	Professor[] professorsArray = new Professor[0];
@@ -261,6 +262,7 @@ public class FacultyObject {
 			result = "All students : ";
 			sortStudentsArray();
 			for(int i=0;i<studentArray.length;i++) {
+				//if(studentArray[i].getCourse()==checkCourse&&studentArray[i].getGroup()==checkGroup)
 				result+="\n"+studentArray[i].name;
 			}
 		}
@@ -273,5 +275,20 @@ public class FacultyObject {
 		}
 		return result;
 	}
+
+	/**
+	 * @param checkCourse the checkCourse to set
+	 */
+	public void setCheckCourse(int checkCourse) {
+		this.checkCourse = checkCourse;
+	}
+
+	/**
+	 * @param checkGroup the checkGroup to set
+	 */
+	public void setCheckGroup(int checkGroup) {
+		this.checkGroup = checkGroup;
+	}
+
 	
 }

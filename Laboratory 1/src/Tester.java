@@ -121,7 +121,7 @@ public class Tester {
 					}
 					boolean stop2=false;
 					while(stop2 == false && stop1!=true) {
-						System.out.println("Press :\n1)Add \n2)Delete  \n3)Edit \n4)Show all \n0)Exit");
+						System.out.println("Press :\n1)Add \n2)Delete  \n3)Edit \n4)Show  \n0)Exit");
 						int n3 = DataInput.getInt();
 						switch (n3) {
 						case 1:
@@ -134,8 +134,22 @@ public class Tester {
 							faculties.editPeople(people);
 						break;
 						case 4:
-							faculties.showAllPeople(people);
+							System.out.println("Press : \n1)Show all \n2)Show by course and name \n0)Exit");
+							int input = DataInput.getInt();
+							switch(input) {
+							case 1:
+								faculties.showPeople(people, true);
+							break;
+							case 2:
+								faculties.showPeople(people, false);
+							break;
+							case 0:
+								break;
+							}
+							
 						break;
+						
+	
 						case 0:
 							stop2 = true;
 						break;

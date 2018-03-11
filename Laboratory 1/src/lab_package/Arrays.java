@@ -4,7 +4,8 @@ import java.io.IOException;
 
 public class Arrays {
 	public Faculty[] facultiesArray;
-	public int checkCourse,checkGroup;
+	private int course,group;
+	
 
 	public Arrays() {
 		this.facultiesArray = new Faculty[0];
@@ -263,7 +264,7 @@ public class Arrays {
 	
 	/**Work with students and professors*/
 	
-	public void showAllPeople(People people) throws IOException{
+	public void showPeople(People people,boolean flag) throws IOException{
 		boolean stop=false;
 		System.out.println("Enter the faculty of "+people.oName+" : ");
 		String facStr = DataInput.getString();
@@ -290,11 +291,14 @@ public class Arrays {
 				System.out.println("Enter the specialty : ");
 				String specName = DataInput.getString();
 				facultyObject = new Specialty(specName);
-				
+				if(flag == false) {
 				System.out.println("Enter the course : ");  
-				checkCourse  = DataInput.getInt();
+				course  = DataInput.getInt();
+				facultyObject.setCheckCourse(course);
 				System.out.println("Enter the group: ");
-				checkGroup = DataInput.getInt();
+				group = DataInput.getInt();
+				facultyObject.setCheckGroup(group);
+				}
 				
 			}
 			while(facultiesArray[k].checkFacultyObject(facultyObject) == false) {
@@ -318,12 +322,14 @@ public class Arrays {
 					System.out.println(facultiesArray[k].departmentArray[num].toString(people));
 				}
 				else if(facultyObject.indicator ==2) {
+				
 					System.out.println(facultiesArray[k].specialtyArray[num].toString(people));
+					
 				}
 			}
 		}
 	}
-	
+
 	
 	public void createPeople(People people) throws IOException{
 		boolean stop = false;
