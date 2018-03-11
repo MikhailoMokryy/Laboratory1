@@ -29,8 +29,53 @@ public class Student extends People{
 		}
 		else System.out.println("Something went wrong!!!");
 	}
+	
+	
 
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the course
+	 */
+	public int getCourse() {
+		return course;
+	}
+
+	/**
+	 * @param course the course to set
+	 */
+	public void setCourse(int course) {
+		this.course = course;
+	}
+
+	/**
+	 * @return the group
+	 */
+	public int getGroup() {
+		return group;
+	}
+
+	/**
+	 * @param group the group to set
+	 */
+	public void setGroup(int group) {
+		this.group = group;
+	}
+	
 	public String toString() {
 		return "Name : "+this.name;
 	}
+
 }

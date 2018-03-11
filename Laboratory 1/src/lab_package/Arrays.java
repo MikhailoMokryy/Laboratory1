@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class Arrays {
 	public Faculty[] facultiesArray;
+	public int checkCourse,checkGroup;
 
 	public Arrays() {
 		this.facultiesArray = new Faculty[0];
@@ -289,6 +290,12 @@ public class Arrays {
 				System.out.println("Enter the specialty : ");
 				String specName = DataInput.getString();
 				facultyObject = new Specialty(specName);
+				
+				System.out.println("Enter the course : ");  
+				checkCourse  = DataInput.getInt();
+				System.out.println("Enter the group: ");
+				checkGroup = DataInput.getInt();
+				
 			}
 			while(facultiesArray[k].checkFacultyObject(facultyObject) == false) {
 					System.out.println("There is no such "+facultyObject.oName+"!!!\nPress 0 to exit \n\nEnter the "+facultyObject.oName+" of "+people.oName+" : ");
@@ -307,7 +314,7 @@ public class Arrays {
 			if(stop2!=true) {
 				int num=facultiesArray[k].positionInArray(facultyObject);
 				if(facultyObject.indicator ==1) {
-					;
+					
 					System.out.println(facultiesArray[k].departmentArray[num].toString(people));
 				}
 				else if(facultyObject.indicator ==2) {
@@ -316,6 +323,7 @@ public class Arrays {
 			}
 		}
 	}
+	
 	
 	public void createPeople(People people) throws IOException{
 		boolean stop = false;
