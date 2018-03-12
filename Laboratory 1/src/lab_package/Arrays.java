@@ -506,6 +506,89 @@ public class Arrays {
 		}
 	}
 	
+	
+	public String findPeople() throws IOException{
+		String result="";
+		System.out.println("Press : \n1)To find student \n2)To find professor\n0)Exit");
+		int pStr = DataInput.getInt();
+		People people = new Student();
+		if(pStr == 1)	people = new Student();
+		else if(pStr==2)people = new Professor();
+		if(pStr==1 || pStr==2) {
+			int iFinal = 0;
+			int kFinal = 0;
+			int pFinal = 0;
+			boolean none=false;
+			System.out.println("Enter the name of "+people.oName+" : ");
+			String name = DataInput.getString();
+			for(int i=0;i<facultiesArray.length;i++) {
+				if(pStr==1) {
+					for(int k=0;k<facultiesArray[i].specialtyArray.length;k++) {
+						for(int p=0;p<facultiesArray[i].specialtyArray[k].studentArray.length;p++) {
+							none = false;
+							for(int f = 0;f<facultiesArray[i].specialtyArray[k].studentArray[p].name.length();f++) {
+								if(facultiesArray[i].specialtyArray[k].studentArray[p].name.charAt(f)!=name.charAt(f)) {
+									none = true;
+									break;
+								}
+							}
+							if(none == false) {
+								pFinal = p;
+								break;
+							}
+						}
+						if(none == false) {
+							kFinal = k;
+							break;
+						}
+					}
+					if(none == false) {
+						iFinal = i;
+						break;
+					}
+				}
+				else 
+					for(int k=0;k<facultiesArray[i].departmentArray.length;k++) {
+						for(int p=0;p<facultiesArray[i].departmentArray[k].professorsArray.length;p++) {
+							none = false;
+							for(int f = 0;f<facultiesArray[i].departmentArray[k].professorsArray[p].name.length();f++) {
+								if(facultiesArray[i].departmentArray[k].professorsArray[p].name.charAt(f)!= name.charAt(f)) {
+									none = true;
+									break;
+								}
+							}
+							if(none == false) {
+								pFinal = p;
+								break;
+							}
+						}
+						if(none == false) {
+							kFinal = k;
+							break;
+						}
+					}
+					if(none == false) {
+						iFinal = i;
+						break;
+					}
+			}
+			if(none == false) {
+				if(pStr == 1) {
+					Student student = facultiesArray[iFinal].specialtyArray[kFinal].studentArray[pFinal];
+					result="\nStudent name : "+student.name+"\nFaculty : "+facultiesArray[iFinal].name+"\nSpecialty : "+facultiesArray[iFinal].specialtyArray[kFinal].name+"\nGroup : "+student.group+"\nCourse : "+student.course+"\n";
+				}
+				else {
+					Professor professor = facultiesArray[iFinal].departmentArray[kFinal].professorsArray[pFinal];
+					result="\nProfessor name : "+professor.name+"\nFaculty : "+facultiesArray[iFinal].name+"\nDepartment : "+facultiesArray[iFinal].departmentArray[kFinal].name+"\n";
+				}
+			}
+			else result="There is no such "+people.oName;
+			
+		}
+		return result;
+		
+	}
+	
 
 	
 	/** method return string*/

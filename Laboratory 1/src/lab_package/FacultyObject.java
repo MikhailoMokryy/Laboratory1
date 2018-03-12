@@ -351,6 +351,7 @@ public class FacultyObject {
 		return result;
 	}
 	
+	
 	public String toString(People people) {
 		String result="";
 		if(people.indicator==1) {

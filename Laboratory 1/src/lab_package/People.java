@@ -2,7 +2,7 @@ package lab_package;
 
 public abstract class People {
 String name;
-int age;
+public int age,group,course;
 public int indicator=0;
 public String oName = "people";
 People(){

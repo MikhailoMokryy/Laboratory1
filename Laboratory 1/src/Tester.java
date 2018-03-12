@@ -14,7 +14,7 @@ public class Tester {
 		Arrays faculties = new Arrays();
 		while (true) {
 			boolean stop = false;
-			System.out.println("Press :\n1)Work with faculties\n2)Work with Departments/Specialties \n3)Work with Students/Professors\n0)Exit");
+			System.out.println("Press :\n1)Work with faculties\n2)Work with Departments/Specialties \n3)Work with Students/Professors \n4)Find\n0)Exit");
 			int n = DataInput.getInt();
 			switch (n) {
 
@@ -180,6 +180,9 @@ public class Tester {
 				}
 			}
 			break;
+			case 4:
+				System.out.println(faculties.findPeople());
+				break;
 			}
 		}
 }
