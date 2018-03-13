@@ -527,7 +527,7 @@ public class Arrays {
 						for(int p=0;p<facultiesArray[i].specialtyArray[k].studentArray.length;p++) {
 							none = false;
 							for(int f = 0;f<facultiesArray[i].specialtyArray[k].studentArray[p].name.length();f++) {
-								if(facultiesArray[i].specialtyArray[k].studentArray[p].name.charAt(f)!=name.charAt(f)) {
+								if(facultiesArray[i].specialtyArray[k].studentArray[p].name.charAt(f)!=name.charAt(f) || facultiesArray[i].specialtyArray[k].studentArray[p].name.length()!=name.length()) {
 									none = true;
 									break;
 								}
@@ -552,7 +552,7 @@ public class Arrays {
 						for(int p=0;p<facultiesArray[i].departmentArray[k].professorsArray.length;p++) {
 							none = false;
 							for(int f = 0;f<facultiesArray[i].departmentArray[k].professorsArray[p].name.length();f++) {
-								if(facultiesArray[i].departmentArray[k].professorsArray[p].name.charAt(f)!= name.charAt(f)) {
+								if(facultiesArray[i].departmentArray[k].professorsArray[p].name.charAt(f)!= name.charAt(f) || facultiesArray[i].departmentArray[k].professorsArray[p].name.length()!= name.length()) {
 									none = true;
 									break;
 								}
