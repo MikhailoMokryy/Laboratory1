@@ -229,9 +229,10 @@ public class Arrays {
 				result = this.facultiesArray[i];
 				break;
 			}
-		}
+		}	
 		return result;
 	}
+	
 	
 	/** method check faculty */
 	public boolean checkFaculty(String name) throws IOException{
@@ -270,23 +271,22 @@ public class Arrays {
 		boolean stop=false;
 		System.out.println("Enter the faculty of "+people.oName+" : ");
 		String facStr = DataInput.getString();
-		Faculty faculty2 = checkAndSetFaculty(facStr);
-		while(faculty2==null) {
+		Faculty faculty = checkAndSetFaculty(facStr);
+		while(faculty==null) {
 			System.out.println("There is no such faculty!!!\nPress 0 to exit \n\nEnter the faculty of "+people.oName+" : ");
 			facStr = DataInput.getString();
 			if(facStr.charAt(0)=='0') {
 				stop=true;
 				break;
 			}
-			faculty2 = checkAndSetFaculty(facStr);
+			faculty = checkAndSetFaculty(facStr);
 		}
 		if(stop == false) {
-			int k = positionInArray(faculty2.name);
+			int k = positionInArray(faculty.name);
 			boolean stop2=false;
 			FacultyObject facultyObject;
-			if(people.indicator == 2) {
-				
-				System.out.println("Enter the department : ");
+			if(people.indicator == 2) {	
+				System.out.println("Enter the department: ");
 				String depName = DataInput.getString();
 				facultyObject = new Department(depName);
 			}
@@ -294,7 +294,7 @@ public class Arrays {
 				System.out.println("Enter the specialty: ");
 				String specName = DataInput.getString();
 				facultyObject = new Specialty(specName);
-	         //?
+	         
 				if(flag ==  1) {
 				
 				System.out.println("Enter the course: ");  
@@ -338,7 +338,6 @@ public class Arrays {
 			}
 		}
 		flag=0;
-	
 	}
 
 	/** method create student or professor object*/
@@ -527,7 +526,7 @@ public class Arrays {
 						for(int p=0;p<facultiesArray[i].specialtyArray[k].studentArray.length;p++) {
 							none = false;
 							for(int f = 0;f<facultiesArray[i].specialtyArray[k].studentArray[p].name.length();f++) {
-								if(facultiesArray[i].specialtyArray[k].studentArray[p].name.charAt(f)!=name.charAt(f) || facultiesArray[i].specialtyArray[k].studentArray[p].name.length()!=name.length()) {
+								if(facultiesArray[i].specialtyArray[k].studentArray[p].name.charAt(f)!=name.charAt(f) ) {
 									none = true;
 									break;
 								}
@@ -552,7 +551,7 @@ public class Arrays {
 						for(int p=0;p<facultiesArray[i].departmentArray[k].professorsArray.length;p++) {
 							none = false;
 							for(int f = 0;f<facultiesArray[i].departmentArray[k].professorsArray[p].name.length();f++) {
-								if(facultiesArray[i].departmentArray[k].professorsArray[p].name.charAt(f)!= name.charAt(f) || facultiesArray[i].departmentArray[k].professorsArray[p].name.length()!= name.length()) {
+								if(facultiesArray[i].departmentArray[k].professorsArray[p].name.charAt(f)!= name.charAt(f)) {
 									none = true;
 									break;
 								}

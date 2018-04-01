@@ -233,9 +233,9 @@ public class FacultyObject {
 			}
 			
 			if (i != min_i) {
-				String str = studentArray[i].name;
- 				studentArray[i].name = studentArray[min_i].name;
-				studentArray[min_i].name = str;
+				Student tmp =studentArray[i];
+				studentArray[i]= studentArray[min_i];
+				studentArray[min_i] = tmp;
 			
 		      }
 		}
@@ -253,13 +253,10 @@ public class FacultyObject {
 				}
 			}
 			if (i != min_i) {
-				int tmp =studentArray[i].course;
-				studentArray[i].course = studentArray[min_i].course;
-				studentArray[min_i].course = tmp;
+				Student tmp =studentArray[i];
+				studentArray[i]= studentArray[min_i];
+				studentArray[min_i] = tmp;
 
-				String str = studentArray[i].name;
- 				studentArray[i].name = studentArray[min_i].name;
-				studentArray[min_i].name = str;
 			}
 		}
 	}
@@ -277,13 +274,11 @@ public class FacultyObject {
 				}
 			}
 			if (i != min_i) {
-				int tmp =studentArray[i].group;
-				studentArray[i].group= studentArray[min_i].group;
-				studentArray[min_i].group = tmp;
+				Student tmp =studentArray[i];
+				studentArray[i]= studentArray[min_i];
+				studentArray[min_i] = tmp;
 
-				String str = studentArray[i].name;
- 				studentArray[i].name = studentArray[min_i].name;
-				studentArray[min_i].name = str;
+			
 			}
 		}
 	}
@@ -309,9 +304,9 @@ public class FacultyObject {
 			}
 			
 			if (i != min_i) {
-				String str = professorsArray[i].name;
-				professorsArray[i].name = professorsArray[min_i].name;
-				professorsArray[min_i].name = str;
+				Professor str = professorsArray[i];
+				professorsArray[i] = professorsArray[min_i];
+				professorsArray[min_i] = str;
 			
 		      }
 		}
